@@ -23,8 +23,8 @@ function runContentScript() {
     });
   });
 }
-let changeColor = document.getElementById("changeColor");
-changeColor.addEventListener("click", runContentScript)
+let refresh = document.getElementById("refresh");
+refresh.addEventListener("click", runContentScript)
 
 runContentScript()
 
@@ -33,7 +33,8 @@ chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     console.log(`received msg from content script: ${sender.tab.url} with data: ${JSON.stringify(request.guesses)}`)
     if (request.guesses !== "hello"){
-      oneCall({guesses: request.guesses}).then(resp => {
+      oneCall({guesses: request.guesses})
+      .then(resp => {
         wordsLeftText.innerText = resp.targets_left_len
       })
       sendResponse({farewell: "goodbye"});
