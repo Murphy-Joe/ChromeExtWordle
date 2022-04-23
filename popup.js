@@ -29,17 +29,29 @@ chrome.runtime.onMessage.addListener(
   }
 );
 
+chrome.storage.onChanged.addListener(function (changes, namespace) {
+  for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
+    console.log(
+      `Storage key "${key}" in namespace "${namespace}" changed.`,
+      `Old value was "${oldValue}", new value is "${newValue}".`
+    );
+  }
+});
+
 
 // The body of this function will be execuetd as a content script inside the
 // current page
 function getGuesses() {
   let storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
   const guesses = JSON.stringify(storage.boardState)
-  console.log(guesses)
 
   chrome.runtime.sendMessage({guesses: guesses }, function(response) {
     console.log(`sent guesses: ${guesses}`);
     console.log(`got response: ${response.farewell}`);
+  });
+
+  chrome.storage.sync.set({guesses: guesses }, function() {
+    console.log('Value is set to ' + guesses);
   });
 
   return guesses;
