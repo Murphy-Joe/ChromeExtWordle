@@ -1,0 +1,25 @@
+{
+    "boardState": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    ],
+    "evaluations": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    "rowIndex": 0,
+    "solution": "askew",
+    "gameStatus": "IN_PROGRESS",
+    "lastPlayedTs": 1650916887259,
+    "lastCompletedTs": null,
+    "restoringFromLocalStorage": null,
+    "hardMode": false
+}

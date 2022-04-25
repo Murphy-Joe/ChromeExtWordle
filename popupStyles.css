@@ -1,6 +1,6 @@
 body {
   width: 450px;
-  
+
 }
 
 .button-container {
@@ -9,7 +9,7 @@ body {
   justify-content: space-around;
 }
 
-button {
+.landing-btn {
   height: 30px;
   width: 28%;
   outline: none;
@@ -29,4 +29,34 @@ button {
 
 .big-btn {
   flex-basis: 42%;
+}
+
+#wordsLeftPage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.word-btn, .back {
+  height: 30px;
+  width: 15%;
+  margin: 1.5%;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  
+}
+
+.back {
+  background-color: #4CAF50;
+  margin-right: 1%;
+}
+
+.word-btn {
+  background-color: rgb(64, 63, 63);
+  color: whitesmoke;
+}
+
+.hidden {
+  display: none !important;
 }
