@@ -21,9 +21,8 @@ function callApis(){
 
 }
 
-function recieveMsg(request, sender, sendResponse, endpointToCall) {
+function recieveMsg(request, sender, endpointToCall) {
   // console.log(`received from: ${sender.tab.url}: ${JSON.stringify(request.guesses)}`)
-  sendResponse({ farewell: "goodbye" })
   return callApi({ guesses: request.guesses }, endpointToCall)
 }
 
@@ -42,21 +41,21 @@ refresh.addEventListener("click", runContentScript)
 
 runContentScript()
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, sender) => {
   wordsLeft.innerText = "Loading..."
-  recieveMsg(request, sender, sendResponse, "targetsleft")
+  recieveMsg(request, sender, "targetsleft")
     .then(resp => { 
       loadingWordsLeft = false;
       wordsLeft.innerText = `${resp.count} Words Left` 
     })  
   bestLetters.innerText = "Loading..."
-  recieveMsg(request, sender, sendResponse, "bestletters")
+  recieveMsg(request, sender, "bestletters")
     .then(resp => { 
       let letters = Object.keys(resp)
       bestLetters.innerText = `Best ${letters.length} Letters` 
     })
   bestGuess.innerText = "Loading..."
-  recieveMsg(request, sender, sendResponse, "onecall")
+  recieveMsg(request, sender, "onecall")
     .then(resp => { 
       loadingBestGuess = false;
       bestGuess.innerText = `Best Guess: ${resp[0][0].toUpperCase()}` 
@@ -69,7 +68,7 @@ function getGuesses() {
   let storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
   const guesses = storage.boardState
 
-  chrome.runtime.sendMessage({ guesses: guesses }, function (response) {
+  chrome.runtime.sendMessage({ guesses: guesses }, () => {
     console.log(`sent guesses: ${JSON.stringify(guesses)}`)
     console.log(`got response: ${response.farewell}`);
   });
