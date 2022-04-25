@@ -2,8 +2,6 @@ let wordsLeft = document.getElementById("wordsLeft")
 let bestLetters = document.getElementById("bestLetters")
 let bestGuess = document.getElementById("bestGuess")
 
-let lastGuessList = []
-
 async function callApi(guessPayload, endpoint) {
   const response = await fetch(`https://1vv6d7.deta.dev/${endpoint}`, {
     method: 'POST',
@@ -57,8 +55,7 @@ chrome.runtime.onMessage.addListener((request, sender) => {
   bestGuess.innerText = "Loading..."
   recieveMsg(request, sender, "onecall")
     .then(resp => { 
-      loadingBestGuess = false;
-      bestGuess.innerText = `Best Guess: ${resp[0][0].toUpperCase()}` 
+      bestGuess.innerText = `${bestGuess.innerText}: ${resp[0][0]}` 
     })
 });
 
