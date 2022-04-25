@@ -13,8 +13,10 @@ function createWordsLeftPage(resp) {
   resp.targets.forEach(word => {
     let wordBtn = document.createElement("button");
     wordBtn.className = "word-btn";
-    wordBtn.innerText = word;
+    wordBtn.innerText = word.toUpperCase();
     wordsContainer.appendChild(wordBtn);
+    // wordBtn.addEventListener("click", () => {})
+    // send msg to content script to fill in each letter
   });
 }
 
@@ -52,7 +54,7 @@ function callApis(msg) {
   bestGuess.innerText = "Loading..."
   callApi(msg, "onecall")
     .then(resp => {
-      bestGuess.innerText = `Best Guess: ${resp[0][0].toUpperCase()}`
+      bestGuess.innerText = `Most Narrowing Guess: XXXXXX`
     })
 }
 
@@ -73,14 +75,14 @@ runContentScript()
 refresh.addEventListener("click", runContentScript)
 
 wordsLeft.addEventListener("click", () => {
-  landingPage.classList.add("hidden")
   wordsLeftPage.classList.remove("hidden")
+  landingPage.classList.add("hidden")
 })
 
 backButtons.forEach(btn => {
   btn.addEventListener("click", () => {
-    btn.parentElement.classList.add("hidden")
     landingPage.classList.remove("hidden")
+    btn.parentElement.parentElement.classList.add("hidden")
   })
 })
 
