@@ -1,4 +1,6 @@
-let wordsLeftText = document.getElementById("wordsLeft")
+let wordsLeft = document.getElementById("wordsLeft")
+let bestLetters = document.getElementById("bestLetters")
+let bestGuess = document.getElementById("bestGuess")
 
 async function callApi(guessPayload, endpoint) {
   const response = await fetch(`https://1vv6d7.deta.dev/${endpoint}`, {
@@ -13,12 +15,10 @@ async function callApi(guessPayload, endpoint) {
   return resp;
 }
 
-function recieveMsg(request, sender, sendResponse) {
-  console.log(`received msg from content script: ${sender.tab.url} with data: ${JSON.stringify(request.guesses)}`)
+function recieveMsg(request, sender, sendResponse, endpointToCall) {
+  console.log(`received from: ${sender.tab.url}: ${JSON.stringify(request.guesses)}`)
   sendResponse({ farewell: "goodbye" })
-  if (request.guesses !== "hello") {
-    return callApi({ guesses: request.guesses }, "targetsleft")
-  }
+  return callApi({ guesses: request.guesses }, endpointToCall)
 }
 
 function runContentScript() {
@@ -36,25 +36,25 @@ refresh.addEventListener("click", runContentScript)
 
 runContentScript()
 
-
-// chrome.runtime.onMessage.addListener(
-//   function (request, sender, sendResponse) {
-//     console.log(`received msg from content script: ${sender.tab.url} with data: ${JSON.stringify(request.guesses)}`)
-//     if (request.guesses !== "hello") {
-//       callApi({ guesses: request.guesses }, "targetsleft")
-//         .then(resp => {
-//           wordsLeftText.innerText = resp.length
-//         })
-//       sendResponse({ farewell: "goodbye" });
-//     }
-//   }
-// );
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  recieveMsg(request, sender, sendResponse, "targetsleft")
+    .then(resp => { wordsLeft.innerText = `${resp.count} ${wordsLeft.innerText}` })
+});
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  recieveMsg(request, sender, sendResponse)
-    .then(resp => { wordsLeftText.innerText = resp.length })
-}
-);
+  recieveMsg(request, sender, sendResponse, "bestletters")
+    .then(resp => { 
+      let letters = Object.keys(resp)
+      bestLetters.innerText = `Best ${letters.length} Letters` 
+    })
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  recieveMsg(request, sender, sendResponse, "onecall")
+    .then(resp => { 
+      bestGuess.innerText = `${bestGuess.innerText}: ${resp[0][0]}` 
+    })
+});
 
 // The body of this function will be execuetd as a content script inside the
 // current page
