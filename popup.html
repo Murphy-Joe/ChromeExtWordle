@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="popupStyles.css">
-  </head>
-  <body>
-    <div id="landingPage">
+
+<head>
+  <link rel="stylesheet" href="popupStyles.css">
+</head>
+
+<body>
+  <!-- <div id="landingPage">
       <div class="button-container">
         <button id="refresh" class="big-btn landing-btn">Update Results</button>
         <div class="break"></div>
@@ -12,15 +14,51 @@
         <button id="bestLetters" class="small-btn landing-btn">Best Letters</button>
         <button id="bestGuess" class="small-btn landing-btn">Most Narrowing Guess</button>
       </div>
-    </div>
+    </div> -->
 
-    <div id="wordsLeftPage" class="hidden">
-      <div id="wordsContainer">
-        <button class="back landing-btn">&#60;</button>
-        <!-- buttons -->
+  <div id="landingPage">
+    <div class="button-container">
+      <div id="wordsLeft" class="landing-container">
+        <div class="label">Words Left </div>
+        <div class="lttrs-container">
+          <div class="lttrs green-tile"></div>
+          <div class="lttrs green-tile">2</div>
+          <div class="lttrs green-tile">9</div>
+          <div class="lttrs green-tile">0</div>
+          <div class="lttrs green-tile">3</div>
+        </div>
+      </div>
+      <div id="bestLetters" class="landing-container">
+        <div class="label">Best Letters </div>
+        <div class="lttrs-container">
+          <div class="lttrs gray-tile colored-letters">L</div>
+          <div class="lttrs gray-tile colored-letters">T</div>
+          <div class="lttrs gray-tile colored-letters">T</div>
+          <div class="lttrs gray-tile colored-letters">R</div>
+          <div class="lttrs gray-tile colored-letters">S</div>
+        </div>
+      </div>
+      <div id="bestGuess" class="landing-container">
+        <div class="label">Best Guesses </div>
+        <div class="lttrs-container">
+          <div class="lttrs yellow-tile">?</div>
+          <div class="lttrs yellow-tile">?</div>
+          <div class="lttrs yellow-tile">?</div>
+          <div class="lttrs yellow-tile">?</div>
+          <div class="lttrs yellow-tile">?</div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <script src="popup.js"></script>
-  </body>
+  <div id="wordsLeftPage" class="hidden">
+    <div id="wordsContainer">
+      <button class="back landing-btn">&#60;</button>
+      <!-- buttons -->
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
 </html>

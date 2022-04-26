@@ -1,12 +1,26 @@
+@font-face {
+  font-family: 'Karnak';
+  src: url("karnakcondensed-normal-700.woff2"), format("woff2");
+}
+
 body {
   width: 450px;
+  height: 250px;
+}
 
+#landingPage {
+  height: 100%;
+  width: 100%;
 }
 
 .button-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
 }
 
 .landing-btn {
@@ -59,4 +73,62 @@ body {
 
 .hidden {
   display: none !important;
+}
+
+.landing-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.lttrs-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 70%;
+}
+
+.gray-tile {
+  background-color: #3a3a3c;
+  margin: 1px;
+}
+
+.green-tile {
+  background-color: #6aaa64;
+  margin: 1px;
+}
+
+.yellow-tile {
+  background-color: #c9b458;
+  margin: 1px;
+}
+
+.label {
+  font-family: 'Karnak';
+  font-size: 1.5em;
+  color: whitesmoke;
+  width: 86px;
+}
+
+.lttrs {
+  font-family: 'Karnak', Helvetica;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 57px;
+  height: 57px;
+}
+
+.colored-letters:nth-child(3) {
+  color: #6aaa64;
+}
+
+.colored-letters:nth-child(even) {
+  color: #c9b458;
+}
+
+.colored-letters:nth-child(1) .lttrs:nth-child(5) {
+  color: lightgray;
 }
