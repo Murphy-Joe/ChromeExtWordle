@@ -1,0 +1,16 @@
+#wordsLeftPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .back {
+    height: 30px;
+    width: 15%;
+    margin: 1.5%;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    background-color: #4CAF50;
+    margin-right: 1%;  
+  }

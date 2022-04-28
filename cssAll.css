@@ -1,0 +1,10 @@
+@import url('https://css.gg/sync.css');
+
+body {
+  width: 300px;
+  height: 200px;
+}
+
+.hidden {
+    display: none !important;
+  }
