@@ -1,10 +1,19 @@
 let wordsLeft = document.getElementById("wordsLeft")
+let wordsLeftTiles = document.querySelectorAll("#wordsLeft .tiles");
+
 let bestLetters = document.getElementById("bestLetters")
+let bestLettersTiles = document.querySelectorAll("#bestLetters .tiles");
+
 let bestGuess = document.getElementById("bestGuess")
+let bestGuessTiles = document.querySelectorAll("#bestGuess .tiles");
+
 let refresh = document.getElementById("refresh");
+
 let landingPage = document.getElementById("landingPage")
+
 let wordsLeftPage = document.getElementById("wordsLeftPage")
 let wordsContainer = document.getElementById("wordsContainer")
+
 let backButtons = document.querySelectorAll(".back")
 
 let lastGuessList = []
@@ -36,25 +45,31 @@ async function callApi(msg, endpoint) {
 }
 
 function callApis(msg) {
-  wordsLeft.innerText = "Loading..."
+  // wordsLeft.innerText = "Loading..."
+  wordsLeftTiles.forEach(tile => {tile.innerText = "-"})
   callApi(msg, "targetsleft")
     .then(resp => {
-      loadingWordsLeft = false;
-      wordsLeft.innerText = `${resp.count} Words Left`
+      wordsLeftTiles.forEach(tile => {tile.innerText = ""})
+      let wordsLeftTilesIdx = 4;
+      let digitsInAmtWordsLeft = resp.count.toString().length;
+      for (let i = digitsInAmtWordsLeft; i > 0; i--) {
+        wordsLeftTiles[wordsLeftTilesIdx].innerText = resp.count.toString()[i-1]
+        wordsLeftTilesIdx--;
+      }
       createWordsLeftPage(resp);
     })
 
-  bestLetters.innerText = "Loading..."
+  // bestLetters.innerText = "Loading..."
   callApi(msg, "bestletters")
     .then(resp => {
       let letters = Object.keys(resp)
-      bestLetters.innerText = `Best ${letters.length} Letters`
+      // bestLetters.innerText = `Best ${letters.length} Letters`
     })
 
-  bestGuess.innerText = "Loading..."
+  // bestGuess.innerText = "Loading..."
   callApi(msg, "onecall")
     .then(resp => {
-      bestGuess.innerText = `Most Narrowing Guess: XXXXXX`
+      // bestGuess.innerText = `Most Narrowing Guess: XXXXXX`
     })
 }
 
