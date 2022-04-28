@@ -2,50 +2,40 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="popupStyles.css">
+  <link rel="stylesheet" href="cssAll.css">
+  <link rel="stylesheet" href="cssLanding.css">
+  <link rel="stylesheet" href="cssWordsLeft.css">
 </head>
 
 <body>
-  <!-- <div id="landingPage">
-      <div class="button-container">
-        <button id="refresh" class="big-btn landing-btn">Update Results</button>
-        <div class="break"></div>
-        <button id="wordsLeft" class="small-btn landing-btn">Words Left</button>
-        <button id="bestLetters" class="small-btn landing-btn">Best Letters</button>
-        <button id="bestGuess" class="small-btn landing-btn">Most Narrowing Guess</button>
-      </div>
-    </div> -->
-
   <div id="landingPage">
-    <div class="button-container">
+    <div class="landing-page-container">
+      <div id="refresh"><i class="gg-sync"></i></div>
       <div id="wordsLeft" class="landing-container">
-        <div class="label">Words Left </div>
-        <div class="lttrs-container">
-          <div class="lttrs green-tile"></div>
-          <div class="lttrs green-tile">2</div>
-          <div class="lttrs green-tile">9</div>
-          <div class="lttrs green-tile">0</div>
-          <div class="lttrs green-tile">3</div>
+        <div class="tiles-container">
+          <div class="tiles green-tile"></div>
+          <div class="tiles green-tile">2</div>
+          <div class="tiles green-tile">9</div>
+          <div class="tiles green-tile">0</div>
+          <div class="tiles green-tile">3</div>
         </div>
       </div>
       <div id="bestLetters" class="landing-container">
-        <div class="label">Best Letters </div>
-        <div class="lttrs-container">
-          <div class="lttrs gray-tile colored-letters">L</div>
-          <div class="lttrs gray-tile colored-letters">T</div>
-          <div class="lttrs gray-tile colored-letters">T</div>
-          <div class="lttrs gray-tile colored-letters">R</div>
-          <div class="lttrs gray-tile colored-letters">S</div>
+        <div class="tiles-container">
+          <div class="tiles gray-tile colored-letters">L</div>
+          <div class="tiles gray-tile colored-letters">T</div>
+          <div class="tiles gray-tile colored-letters">T</div>
+          <div class="tiles gray-tile colored-letters">R</div>
+          <div class="tiles gray-tile colored-letters">S</div>
         </div>
       </div>
       <div id="bestGuess" class="landing-container">
-        <div class="label">Best Guesses </div>
-        <div class="lttrs-container">
-          <div class="lttrs yellow-tile">?</div>
-          <div class="lttrs yellow-tile">?</div>
-          <div class="lttrs yellow-tile">?</div>
-          <div class="lttrs yellow-tile">?</div>
-          <div class="lttrs yellow-tile">?</div>
+        <div class="tiles-container">
+          <div class="tiles yellow-tile">?</div>
+          <div class="tiles yellow-tile">?</div>
+          <div class="tiles yellow-tile">?</div>
+          <div class="tiles yellow-tile">?</div>
+          <div class="tiles yellow-tile">?</div>
         </div>
       </div>
     </div>
@@ -53,7 +43,7 @@
 
   <div id="wordsLeftPage" class="hidden">
     <div id="wordsContainer">
-      <button class="back landing-btn">&#60;</button>
+      <button class="back">&#60;</button>
       <!-- buttons -->
     </div>
   </div>
