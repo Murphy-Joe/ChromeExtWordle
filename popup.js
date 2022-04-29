@@ -45,17 +45,17 @@ const hardcodedWords = [
 ]
 
 function createWordsLeftPage(resp) {
+  let delay = 0;
   numTargetsSpan.innerText = hardcodedWords.length;
   // numTargetsSpan.innerText = resp.count;
   // resp.targets.forEach(word => {
-  let delay = 0;
   hardcodedWords.forEach(word => {
     let wordBox = document.createElement("flex");
     wordBox.innerText = word.toUpperCase();
     wordBox.classList.add("word-box");
     wordBox.style.animationDelay= `${delay}s`;
     wordsContainer.appendChild(wordBox);
-    delay += 0.075;
+    delay += 0.025;
     // wordBtn.addEventListener("click", () => {})
     // send msg to content script to fill in each letter
   });
@@ -108,16 +108,16 @@ function callApis(msg) {
 
 
 
-function runContentScript() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+// function runContentScript() {
+//   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
-    chrome.scripting.executeScript({
-      target: { tabId: tabs[0].id },
-      function: getGuesses,
+//     chrome.scripting.executeScript({
+//       target: { tabId: tabs[0].id },
+//       function: getGuesses,
 
-    });
-  });
-}
+//     });
+//   });
+// }
 
 // runContentScript()
 // refresh.addEventListener("click", runContentScript)

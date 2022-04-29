@@ -11,7 +11,8 @@
   align-self: end;
   margin-right: 6%;
   margin-bottom: 8px;
-  color: #3a3a3c;
+  color: var(--darker-text);
+  transition: transform .25s ease-out;
 }
 
 #refresh:hover {
@@ -26,12 +27,14 @@
 .tiles-container {
   justify-content: space-evenly;
   width: 90%;
+  transition-property: opacity, content, color;
+  transition-duration: .25s;
+  transition-timing-function: ease-in-out;
 }
 
 /*#region Tile Hover*/
 .tiles-container:hover {
   cursor: pointer;
-  /* outline: #4CAF50 solid 2px; */
   box-shadow:  #53545497 1px 1px 10px;
 }
 
@@ -54,7 +57,7 @@
 #wordsLeft:hover .tiles-container .tiles,
 #bestLetters:hover .tiles-container .tiles, 
 #bestGuess:hover .tiles-container .tiles {
-  color: whitesmoke;
+  color: rgba(245, 245, 245, 0.688);
 }
 
 #bestLetters:hover .tiles-container .tiles {
@@ -101,12 +104,12 @@
 }
 
 .gray-tile {
-  background-color: #3a3a3c;
+  background-color: var(--darker-text);
 }
 
 .green-tile {
   background-color: #6aaa64;
-  color: #3a3a3c;
+  color: var(--darker-text);
 }
 
 .yellow-tile {

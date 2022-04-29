@@ -3,6 +3,7 @@
 #wordsLeft-page-container {
     flex-wrap: wrap;
     justify-content: flex-start;
+    align-content: flex-start;
     margin-left: 8px;
     height: 170px;
     overflow-y: scroll;
@@ -12,13 +13,18 @@
   margin-bottom: 8px;
   margin-left: 11px;
   margin-right: auto;
-  width: 11px
+  width: 11px;
+  position: relative;
+  left: 0;
+  transition: left .1s;
+
   }
 
 .back:hover {
-  position: relative;
-  left: -2px
-}
+  /* position: relative; */
+  left: -2px;
+  }
+
 
 .title {
   font-weight: 600;
@@ -33,6 +39,9 @@
   letter-spacing: 0.9px;
   box-sizing: border-box;
   animation: flipInX 1.5s ease-in-out;
+  transition-property: background-color, color;
+  transition-duration: .15s;
+  transition-timing-function: ease-in-out;
 }
 
 .word-box:hover {

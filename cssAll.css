@@ -2,17 +2,22 @@
   --darker: #b9c6d2;
 	--middle: #d0dde9;
 	--lighter: #edf0f8;
+  --dark-text: rgb(65, 65, 65);
+  --darker-text: #3a3a3c;
+  --green-tile: #6aaa64;
+  --yellow-tile: #c9b458;
+  --gray-tile: var(--darker-text);
 }
 
 html {
   background: linear-gradient(
-			180deg,
-			var(--lighter) 0%,
-			var(--middle) 30%,
-			var(--darker) 91%
-		);
-		background-repeat: no-repeat;
-		background-position: center;
+    180deg,
+    var(--lighter) 0%,
+    var(--middle) 30%,
+    var(--darker) 91%
+  );
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 body {
