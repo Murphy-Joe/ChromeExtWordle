@@ -12,18 +12,50 @@ let refresh = document.getElementById("refresh");
 let landingPage = document.getElementById("landingPage")
 
 let wordsLeftPage = document.getElementById("wordsLeftPage")
-let wordsContainer = document.getElementById("wordsContainer")
+let wordsContainer = document.getElementById("wordsLeft-page-container")
+let numTargetsSpan = document.getElementById("numTargets");
 
 let backButtons = document.querySelectorAll(".back")
 
 let lastGuessList = []
 
+const hardcodedWords = [
+  "trawl",
+  "trash",
+  "trait",
+  "bravo",
+  "braid",
+  "drawl",
+  "brass",
+  "tramp",
+  "draft",
+  "gravy",
+  "brash",
+  "grass",
+  "fraud",
+  "graph",
+  "drama",
+  "frail",
+  "brawl",
+  "wrath",
+  "trail",
+  "grasp",
+  "graft",
+  "grail"
+]
+
 function createWordsLeftPage(resp) {
-  resp.targets.forEach(word => {
-    let wordBtn = document.createElement("button");
-    wordBtn.className = "word-btn";
-    wordBtn.innerText = word.toUpperCase();
-    wordsContainer.appendChild(wordBtn);
+  numTargetsSpan.innerText = hardcodedWords.length;
+  // numTargetsSpan.innerText = resp.count;
+  // resp.targets.forEach(word => {
+  let delay = 0;
+  hardcodedWords.forEach(word => {
+    let wordBox = document.createElement("flex");
+    wordBox.innerText = word.toUpperCase();
+    wordBox.classList.add("word-box");
+    wordBox.style.animationDelay= `${delay}s`;
+    wordsContainer.appendChild(wordBox);
+    delay += 0.075;
     // wordBtn.addEventListener("click", () => {})
     // send msg to content script to fill in each letter
   });
@@ -45,7 +77,6 @@ async function callApi(msg, endpoint) {
 }
 
 function callApis(msg) {
-  // wordsLeft.innerText = "Loading..."
   wordsLeftTiles.forEach(tile => {
     tile.innerText = ""
     let iconSpan = document.createElement("span");
@@ -64,14 +95,11 @@ function callApis(msg) {
       createWordsLeftPage(resp);
     })
 
-  // bestLetters.innerText = "Loading..."
   callApi(msg, "bestletters")
     .then(resp => {
       let letters = Object.keys(resp)
-      // bestLetters.innerText = `Best ${letters.length} Letters`
     })
 
-  // bestGuess.innerText = "Loading..."
   callApi(msg, "onecall")
     .then(resp => {
       // bestGuess.innerText = `Most Narrowing Guess: XXXXXX`
@@ -91,8 +119,9 @@ function runContentScript() {
   });
 }
 
-runContentScript()
-refresh.addEventListener("click", runContentScript)
+// runContentScript()
+// refresh.addEventListener("click", runContentScript)
+createWordsLeftPage("hi");
 
 wordsLeft.addEventListener("click", () => {
   wordsLeftPage.classList.remove("hidden")
@@ -107,16 +136,16 @@ backButtons.forEach(btn => {
 })
 
 
-chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (JSON.stringify(msg.guesses) !== JSON.stringify(lastGuessList)) {
-    callApis(msg)
-    lastGuessList = msg.guesses
-  }
-  else {
-    console.log('no changes');
-  }
-  sendResponse({ farewell: "goodbye" }) // here till bug fix in chrome 102
-});
+// chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+//   if (JSON.stringify(msg.guesses) !== JSON.stringify(lastGuessList)) {
+//     callApis(msg)
+//     lastGuessList = msg.guesses
+//   }
+//   else {
+//     console.log('no changes');
+//   }
+//   sendResponse({ farewell: "goodbye" }) // here till bug fix in chrome 102
+// });
 
 // The body of this function will be execuetd as a content script inside the
 // current page
