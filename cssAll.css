@@ -1,8 +1,37 @@
+:root {
+  --darker: #b9c6d2;
+	--middle: #d0dde9;
+	--lighter: #edf0f8;
+}
+
+html {
+  background: linear-gradient(
+			180deg,
+			var(--lighter) 0%,
+			var(--middle) 30%,
+			var(--darker) 91%
+		);
+		background-repeat: no-repeat;
+		background-position: center;
+}
+
 body {
   width: 300px;
   height: 200px;
+  margin-bottom: none;
 }
 
 .hidden {
-    display: none !important;
-  }
+  display: none !important;
+}
+
+flex,
+flex-y {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+flex-y {
+  flex-direction: column;
+}
