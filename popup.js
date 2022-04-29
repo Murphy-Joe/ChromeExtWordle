@@ -46,7 +46,12 @@ async function callApi(msg, endpoint) {
 
 function callApis(msg) {
   // wordsLeft.innerText = "Loading..."
-  wordsLeftTiles.forEach(tile => {tile.innerText = "-"})
+  wordsLeftTiles.forEach(tile => {
+    tile.innerText = ""
+    let iconSpan = document.createElement("span");
+    iconSpan.className = "gg-loadbar";
+    tile.appendChild(iconSpan);
+  })
   callApi(msg, "targetsleft")
     .then(resp => {
       wordsLeftTiles.forEach(tile => {tile.innerText = ""})
