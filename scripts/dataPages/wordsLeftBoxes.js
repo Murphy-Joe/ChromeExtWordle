@@ -1,3 +1,6 @@
+let wordsContainer = document.getElementById("wordsLeft-page-container")
+let numTargetsSpan = document.getElementById("numTargets");
+
 export async function createWordsLeftPage(resp) {
     let uiFlipDelay = 0;
     resp.targets.forEach(word => {

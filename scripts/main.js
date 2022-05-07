@@ -1,6 +1,6 @@
 import {HardCodedBestGuesses, hardcodedWords, HardCodedLetters} from './hardCodedResps.js';
-import {populateLettersChartData, populateBestGuessesChart} from './charts/chartCreators.js';
 import {createWordsLeftPage} from './dataPages/wordsLeftBoxes.js';
+import {addEventListeners} from './eventListeners/listeners.js';
 
 let refresh = document.getElementById("refresh");
 
@@ -30,57 +30,6 @@ let lastGuessList = []
 let wordsLeftApiResp;
 
 
-async function callApi(msg, endpoint) {
-  const guessPayload = { guesses: msg.guesses }
-  const response = await fetch(`https://1vv6d7.deta.dev/${endpoint}`, {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json",
-    },
-
-    body: JSON.stringify(guessPayload)
-  })
-  const resp = await response.json();
-  console.log(resp);
-  return resp;
-}
-
-function callApis(msg) {
-  wordsLeftTiles.forEach(tile => {
-    tile.innerText = ""
-    let iconSpan = document.createElement("span");
-    iconSpan.className = "gg-loadbar";
-    tile.appendChild(iconSpan);
-  })
-  callApi(msg, "targetsleft")
-    .then(resp => {
-      wordsLeftTiles.forEach(tile => { tile.innerText = "" })
-      let wordsLeftTilesIdx = 4;
-      let digitsInAmtWordsLeft = resp.count.toString().length;
-      for (let i = digitsInAmtWordsLeft; i > 0; i--) {
-        wordsLeftTiles[wordsLeftTilesIdx].innerText = resp.count.toString()[i - 1]
-        wordsLeftTilesIdx--;
-      }
-      wordsLeftApiResp = resp;
-      // createWordsLeftPage(resp);
-    })
-
-  callApi(msg, "bestletters")
-    .then(resp => {
-      populateLettersChartData(resp)
-    })
-
-  callApi(msg, "onecall")
-    .then(resp => {
-      populateBestGuessesChart(resp)
-    })
-    .catch(err => {
-      console.log(err);
-    })
-}
-
-
-
 function runContentScript() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
@@ -96,30 +45,7 @@ runContentScript()
 refresh.addEventListener("click", runContentScript)
 // createWordsLeftPage("hi");
 
-wordsLeft.addEventListener("click", () => {
-  document.querySelectorAll('.word-box').forEach((elem) => elem.remove());
-  wordsLeftPage.classList.remove("hidden")
-  landingPage.classList.add("hidden")
-  createWordsLeftPage(wordsLeftApiResp);
-})
-
-bestLetters.addEventListener("click", () => {
-  bestLettersPage.classList.remove("hidden")
-  landingPage.classList.add("hidden")
-})
-
-bestGuess.addEventListener("click", () => {
-  // populateBestGuessesChart(HardCodedBestGuesses)
-  bestGuessPage.classList.remove("hidden")
-  landingPage.classList.add("hidden")
-})
-
-backButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    landingPage.classList.remove("hidden")
-    btn.parentElement.parentElement.classList.add("hidden")
-  })
-})
+addEventListeners();
 
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
