@@ -1,3 +1,6 @@
+import {createWordsLeftPage} from '../dataPages/wordsLeftBoxes.js';
+import {wordsLeftApiResp} from '../api/apiCalls.js';
+
 let wordsLeft = document.getElementById("wordsLeft")
 
 let bestLetters = document.getElementById("bestLetters")
@@ -13,8 +16,6 @@ let wordsLeftPage = document.getElementById("wordsLeftPage")
 let bestGuessPage = document.getElementById("bestGuessPage")
 
 let backButtons = document.querySelectorAll(".back")
-
-let wordsLeftApiResp;
 
 export function addEventListeners() {
     wordsLeft.addEventListener("click", () => {

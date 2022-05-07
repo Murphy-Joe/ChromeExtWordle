@@ -1,8 +1,8 @@
 import {HardCodedBestGuesses, hardcodedWords, HardCodedLetters} from './hardCodedResps.js';
 import {createWordsLeftPage} from './dataPages/wordsLeftBoxes.js';
 import {addEventListeners} from './eventListeners/listeners.js';
+import {callApis} from './api/apiCalls.js';
 
-let refresh = document.getElementById("refresh");
 let lastGuessList = []
 
 
@@ -18,6 +18,7 @@ function runContentScript() {
 }
 
 runContentScript()
+let refresh = document.getElementById("refresh");
 refresh.addEventListener("click", runContentScript)
 // createWordsLeftPage("hi");
 

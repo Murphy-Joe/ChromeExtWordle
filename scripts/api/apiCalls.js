@@ -1,7 +1,7 @@
 import {populateLettersChartData, populateBestGuessesChart} from '../charts/chartCreators.js';
 
 let wordsLeftTiles = document.querySelectorAll("#wordsLeft .tiles");
-let wordsLeftApiResp;
+export let wordsLeftApiResp;
 
 export async function callApi(msg, endpoint) {
   const guessPayload = { guesses: msg.guesses }
