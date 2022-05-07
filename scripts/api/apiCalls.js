@@ -1,6 +1,6 @@
 import {populateLettersChartData, populateBestGuessesChart} from '../charts/chartCreators.js';
+import {fillInWordsLeftTiles, loadingWordsLeftTiles} from '../tiles/wordsLeft.js';
 
-let wordsLeftTiles = document.querySelectorAll("#wordsLeft .tiles");
 export let wordsLeftApiResp;
 
 export async function callApi(msg, endpoint) {
@@ -19,23 +19,11 @@ export async function callApi(msg, endpoint) {
 }
 
 export function callApis(msg) {
-  wordsLeftTiles.forEach(tile => {
-    tile.innerText = ""
-    let iconSpan = document.createElement("span");
-    iconSpan.className = "gg-loadbar";
-    tile.appendChild(iconSpan);
-  })
+  loadingWordsLeftTiles();
   callApi(msg, "targetsleft")
     .then(resp => {
-      wordsLeftTiles.forEach(tile => { tile.innerText = "" })
-      let wordsLeftTilesIdx = 4;
-      let digitsInAmtWordsLeft = resp.count.toString().length;
-      for (let i = digitsInAmtWordsLeft; i > 0; i--) {
-        wordsLeftTiles[wordsLeftTilesIdx].innerText = resp.count.toString()[i - 1]
-        wordsLeftTilesIdx--;
-      }
+      fillInWordsLeftTiles(resp);
       wordsLeftApiResp = resp;
-      // createWordsLeftPage(resp);
     })
 
   callApi(msg, "bestletters")

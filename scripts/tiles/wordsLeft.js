@@ -1,6 +1,6 @@
 let wordsLeftTiles = document.querySelectorAll("#wordsLeft .tiles");
 
-function fillInWordsLeftTiles(resp) {
+export function fillInWordsLeftTiles(resp) {
   wordsLeftTiles.forEach(tile => { tile.innerText = "" })
   let wordsLeftTilesIdx = 4;
   let digitsInAmtWordsLeft = resp.count.toString().length;
@@ -8,4 +8,14 @@ function fillInWordsLeftTiles(resp) {
     wordsLeftTiles[wordsLeftTilesIdx].innerText = resp.count.toString()[i - 1]
     wordsLeftTilesIdx--;
   }
+}
+
+export function loadingWordsLeftTiles() {
+  wordsLeftTiles.forEach(tile => {
+    tile.innerText = ""
+    let iconSpan = document.createElement("span");
+    iconSpan.className = "gg-loadbar";
+    tile.appendChild(iconSpan);
+  }
+  )
 }

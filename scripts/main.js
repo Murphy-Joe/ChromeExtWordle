@@ -5,7 +5,6 @@ import {callApis} from './api/apiCalls.js';
 
 let lastGuessList = []
 
-
 function runContentScript() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
