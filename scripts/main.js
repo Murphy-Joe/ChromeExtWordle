@@ -3,31 +3,7 @@ import {createWordsLeftPage} from './dataPages/wordsLeftBoxes.js';
 import {addEventListeners} from './eventListeners/listeners.js';
 
 let refresh = document.getElementById("refresh");
-
-let wordsLeft = document.getElementById("wordsLeft")
-let wordsLeftTiles = document.querySelectorAll("#wordsLeft .tiles");
-
-let bestLetters = document.getElementById("bestLetters")
-let bestLettersTiles = document.querySelectorAll("#bestLetters .tiles");
-
-let bestGuess = document.getElementById("bestGuess")
-let bestGuessTiles = document.querySelectorAll("#bestGuess .tiles");
-
-let landingPage = document.getElementById("landingPage")
-
-let bestLettersPage = document.getElementById("lettersPage");
-
-let wordsLeftPage = document.getElementById("wordsLeftPage")
-let wordsContainer = document.getElementById("wordsLeft-page-container")
-let numTargetsSpan = document.getElementById("numTargets");
-
-let bestGuessPage = document.getElementById("bestGuessPage")
-
-let backButtons = document.querySelectorAll(".back")
-
 let lastGuessList = []
-
-let wordsLeftApiResp;
 
 
 function runContentScript() {
