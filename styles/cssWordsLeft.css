@@ -42,6 +42,7 @@
   transition-property: background-color, color;
   transition-duration: .15s;
   transition-timing-function: ease-in-out;
+
 }
 
 .word-box:hover {

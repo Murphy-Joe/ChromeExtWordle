@@ -1,3 +1,9 @@
+import {HardCodedBestGuesses, hardcodedWords, HardCodedLetters} from './hardCodedResps.js';
+import {populateLettersChartData, populateBestGuessesChart} from './charts/chartCreators.js';
+import {createWordsLeftPage} from './dataPages/wordsLeftBoxes.js';
+
+let refresh = document.getElementById("refresh");
+
 let wordsLeft = document.getElementById("wordsLeft")
 let wordsLeftTiles = document.querySelectorAll("#wordsLeft .tiles");
 
@@ -7,59 +13,22 @@ let bestLettersTiles = document.querySelectorAll("#bestLetters .tiles");
 let bestGuess = document.getElementById("bestGuess")
 let bestGuessTiles = document.querySelectorAll("#bestGuess .tiles");
 
-let refresh = document.getElementById("refresh");
-
 let landingPage = document.getElementById("landingPage")
+
+let bestLettersPage = document.getElementById("lettersPage");
 
 let wordsLeftPage = document.getElementById("wordsLeftPage")
 let wordsContainer = document.getElementById("wordsLeft-page-container")
 let numTargetsSpan = document.getElementById("numTargets");
 
+let bestGuessPage = document.getElementById("bestGuessPage")
+
 let backButtons = document.querySelectorAll(".back")
 
 let lastGuessList = []
 
-const hardcodedWords = [
-  "trawl",
-  "trash",
-  "trait",
-  "bravo",
-  "braid",
-  "drawl",
-  "brass",
-  "tramp",
-  "draft",
-  "gravy",
-  "brash",
-  "grass",
-  "fraud",
-  "graph",
-  "drama",
-  "frail",
-  "brawl",
-  "wrath",
-  "trail",
-  "grasp",
-  "graft",
-  "grail"
-]
+let wordsLeftApiResp;
 
-function createWordsLeftPage(resp) {
-  let delay = 0;
-  numTargetsSpan.innerText = hardcodedWords.length;
-  // numTargetsSpan.innerText = resp.count;
-  // resp.targets.forEach(word => {
-  hardcodedWords.forEach(word => {
-    let wordBox = document.createElement("flex");
-    wordBox.innerText = word.toUpperCase();
-    wordBox.classList.add("word-box");
-    wordBox.style.animationDelay= `${delay}s`;
-    wordsContainer.appendChild(wordBox);
-    delay += 0.025;
-    // wordBtn.addEventListener("click", () => {})
-    // send msg to content script to fill in each letter
-  });
-}
 
 async function callApi(msg, endpoint) {
   const guessPayload = { guesses: msg.guesses }
@@ -85,46 +54,63 @@ function callApis(msg) {
   })
   callApi(msg, "targetsleft")
     .then(resp => {
-      wordsLeftTiles.forEach(tile => {tile.innerText = ""})
+      wordsLeftTiles.forEach(tile => { tile.innerText = "" })
       let wordsLeftTilesIdx = 4;
       let digitsInAmtWordsLeft = resp.count.toString().length;
       for (let i = digitsInAmtWordsLeft; i > 0; i--) {
-        wordsLeftTiles[wordsLeftTilesIdx].innerText = resp.count.toString()[i-1]
+        wordsLeftTiles[wordsLeftTilesIdx].innerText = resp.count.toString()[i - 1]
         wordsLeftTilesIdx--;
       }
-      createWordsLeftPage(resp);
+      wordsLeftApiResp = resp;
+      // createWordsLeftPage(resp);
     })
 
   callApi(msg, "bestletters")
     .then(resp => {
-      let letters = Object.keys(resp)
+      populateLettersChartData(resp)
     })
 
   callApi(msg, "onecall")
     .then(resp => {
-      // bestGuess.innerText = `Most Narrowing Guess: XXXXXX`
+      populateBestGuessesChart(resp)
+    })
+    .catch(err => {
+      console.log(err);
     })
 }
 
 
 
-// function runContentScript() {
-//   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+function runContentScript() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
-//     chrome.scripting.executeScript({
-//       target: { tabId: tabs[0].id },
-//       function: getGuesses,
+    chrome.scripting.executeScript({
+      target: { tabId: tabs[0].id },
+      function: getGuesses,
 
-//     });
-//   });
-// }
+    });
+  });
+}
 
-// runContentScript()
-// refresh.addEventListener("click", runContentScript)
-createWordsLeftPage("hi");
+runContentScript()
+refresh.addEventListener("click", runContentScript)
+// createWordsLeftPage("hi");
 
 wordsLeft.addEventListener("click", () => {
+  document.querySelectorAll('.word-box').forEach((elem) => elem.remove());
   wordsLeftPage.classList.remove("hidden")
+  landingPage.classList.add("hidden")
+  createWordsLeftPage(wordsLeftApiResp);
+})
+
+bestLetters.addEventListener("click", () => {
+  bestLettersPage.classList.remove("hidden")
+  landingPage.classList.add("hidden")
+})
+
+bestGuess.addEventListener("click", () => {
+  // populateBestGuessesChart(HardCodedBestGuesses)
+  bestGuessPage.classList.remove("hidden")
   landingPage.classList.add("hidden")
 })
 
@@ -136,16 +122,16 @@ backButtons.forEach(btn => {
 })
 
 
-// chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-//   if (JSON.stringify(msg.guesses) !== JSON.stringify(lastGuessList)) {
-//     callApis(msg)
-//     lastGuessList = msg.guesses
-//   }
-//   else {
-//     console.log('no changes');
-//   }
-//   sendResponse({ farewell: "goodbye" }) // here till bug fix in chrome 102
-// });
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (JSON.stringify(msg.guesses) !== JSON.stringify(lastGuessList)) {
+    callApis(msg)
+    lastGuessList = msg.guesses
+  }
+  else {
+    console.log('no changes');
+  }
+  sendResponse({ farewell: "goodbye" }) // here till bug fix in chrome 102
+});
 
 // The body of this function will be execuetd as a content script inside the
 // current page

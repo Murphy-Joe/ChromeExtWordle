@@ -2,20 +2,17 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="cssAll.css">
-  <link rel="stylesheet" href="cssLanding.css">
-  <link rel="stylesheet" href="cssWordsLeft.css">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+  <link rel="stylesheet" href="./styles/cssAll.css">
+  <link rel="stylesheet" href="./styles/cssLanding.css">
+  <link rel="stylesheet" href="./styles/cssWordsLeft.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
   <div id="landingPage">
     <flex-y class="landing-page-container">
       <flex id="refresh"><i class="gg-sync"></i></flex>
-      
+
       <flex id="bestLetters" class="landing-container">
         <flex class="tiles-container">
           <flex class="tiles gray-tile colored-letters">L</flex>
@@ -52,7 +49,6 @@
         <i class="gg-arrow-left"></i>
       </div>
       <div class="title">
-        <span id="numTargets"></span> Possible Answers Left
       </div>
     </flex>
     <flex id="wordsLeft-page-container">
@@ -60,7 +56,32 @@
     </flex>
   </div>
 
-  <script src="popup.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <div id="lettersPage" class="hidden">
+    <flex class="title-bar">
+      <div class="back">
+        <i class="gg-arrow-left"></i>
+      </div>
+    </flex>
+
+    <flex id="letters-page-container">
+      <canvas id="letterChart"></canvas>
+    </flex>
+  </div>
+
+  <div id="bestGuessPage" class="hidden">
+    <flex class="title-bar">
+      <div class="back">
+        <i class="gg-arrow-left"></i>
+      </div>
+    </flex>
+
+    <flex id="guess-page-container">
+      <canvas id="guessChart"></canvas>
+    </flex>
+  </div>
+
+  <script src="./scripts/charts/chart.js"></script>
+  <script type="module" src="./scripts/main.js"></script>
+</body>
 
 </html>
