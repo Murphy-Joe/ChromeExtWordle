@@ -31,7 +31,7 @@ export function callApis(msg) {
       populateLettersChartData(resp)
     })
 
-  callApi(msg, "onecall")
+  callApi(msg, "algo")
     .then(resp => {
       populateBestGuessesChart(resp)
     })
