@@ -1,3 +1,6 @@
+import {callApis} from '../api/apiCalls.js';
+let lastGuessList = []
+
 export function receiveGuesses() {
     chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         if (JSON.stringify(msg.guesses) !== JSON.stringify(lastGuessList)) {
