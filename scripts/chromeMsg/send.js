@@ -1,4 +1,4 @@
-import { getAndSendGuesses, receiveGuessSelection } from '../executionScript/executeScript.js';
+import { getAndSendGuesses, receiveGuessSelection } from '../content/contentScript.js';
 
 export function executeApiCallsFromGuesses() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
