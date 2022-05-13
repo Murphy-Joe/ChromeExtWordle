@@ -11,12 +11,10 @@ export const getAndSendGuesses_addGuessSelectionReceiver = () => {
     sendResponse({ farewell: "goodbye" }) // here till bug fix in chrome 102
     console.log(`IM LISTENING! I was sent a message: ${JSON.stringify(msg)}`);
     if (msg.selectedGuess) {
-      console.log('entered listening if');
       fillInGuess(msg.selectedGuess)
     }
   });
   function fillInGuess(guess) {
-    console.log(`how the hell did I get here?`);
     let storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
     const guesses = storage.boardState
 
@@ -35,13 +33,11 @@ export const getAndSendGuesses_addGuessSelectionReceiver = () => {
 
     function getNthChildRow(nthChild) {
       const selectedRow = document.querySelector("body > game-app").shadowRoot.querySelector(`#board > game-row:nth-child(${nthChild})`)
-      console.log(selectedRow);
       return selectedRow;
     }
 
     function getGameTiles(selectedRow) {
       const tiles = selectedRow.shadowRoot.querySelector(".row").children
-      console.log(tiles);
       return tiles;
     }
 
