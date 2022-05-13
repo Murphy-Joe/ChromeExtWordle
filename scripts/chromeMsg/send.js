@@ -1,6 +1,6 @@
 import {getAndSendGuesses} from '../contentScripts/contentScript.js';
 
-export function onStartupRunContentScript() {
+export function onStartupRunContentScriptToGetAndSendGuesses() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.scripting.executeScript({
         target: { tabId: tabs[0].id },
