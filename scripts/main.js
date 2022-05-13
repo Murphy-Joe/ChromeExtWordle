@@ -6,9 +6,6 @@ let lastGuessList = []
 
 onStartupRunContentScript()
 addEventListeners();
-let refresh = document.getElementById("refresh");
-refresh.addEventListener("click", onStartupRunContentScript)
-
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (JSON.stringify(msg.guesses) !== JSON.stringify(lastGuessList)) {

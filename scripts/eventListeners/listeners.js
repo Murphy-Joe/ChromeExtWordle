@@ -1,5 +1,6 @@
 import {createWordsLeftPage} from '../dataPages/wordsLeftBoxes.js';
 import {wordsLeftApiResp} from '../api/apiCalls.js';
+import {onStartupRunContentScript} from '../chromeMsg/send.js';
 
 let wordsLeft = document.getElementById("wordsLeft")
 
@@ -9,13 +10,16 @@ let bestGuess = document.getElementById("bestGuess")
 
 let landingPage = document.getElementById("landingPage")
 
-let bestLettersPage = document.getElementById("lettersPage");
+let bestLettersPage = document.getElementById("lettersPage")
 
 let wordsLeftPage = document.getElementById("wordsLeftPage")
 
 let bestGuessPage = document.getElementById("bestGuessPage")
 
 let backButtons = document.querySelectorAll(".back")
+
+let refresh = document.getElementById("refresh")
+
 
 export function addEventListeners() {
     wordsLeft.addEventListener("click", () => {
@@ -42,4 +46,6 @@ export function addEventListeners() {
             btn.parentElement.parentElement.classList.add("hidden")
         })
     })
+
+    refresh.addEventListener("click", onStartupRunContentScript)
 }
