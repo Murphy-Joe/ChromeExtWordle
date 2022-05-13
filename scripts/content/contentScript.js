@@ -1,4 +1,4 @@
-export const getAndSendGuesses = () => {
+export const getGuessesFromContentPageAndSendBackToExtension = () => {
   let storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
   const guesses = storage.boardState
 
@@ -11,7 +11,7 @@ export const getAndSendGuesses = () => {
 }
 
 
-export function receiveGuessSelection() {
+export function receiveGuessSelectionAndPopulateTiles() {
   chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     sendResponse({ farewell: "goodbye" }) // here till bug fix in chrome 102
     console.log(`IM LISTENING! I was sent a message: ${JSON.stringify(msg)}`);
