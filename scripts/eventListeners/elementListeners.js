@@ -1,6 +1,7 @@
 import {createWordsLeftPage} from '../dataPages/wordsLeftBoxes.js';
 import {wordsLeftApiResp} from '../api/apiCalls.js';
-import {onStartupRunContentScriptToGetAndSendGuesses} from '../chromeMsg/send.js';
+import {getAndSendGuesses} from '../contentScripts/contentScript.js';
+import {sendMsgToContentScript} from '../chromeMsg/send.js';
 
 let wordsLeft = document.getElementById("wordsLeft")
 
@@ -47,5 +48,5 @@ export function addElementListeners() {
         })
     })
 
-    refresh.addEventListener("click", onStartupRunContentScriptToGetAndSendGuesses)
+    refresh.addEventListener("click", sendMsgToContentScript(getAndSendGuesses))
 }
