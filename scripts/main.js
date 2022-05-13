@@ -1,13 +1,13 @@
 import {addEventListeners} from './eventListeners/listeners.js';
 import {callApis} from './api/apiCalls.js';
-import {runGetGuessesAsContentScript} from './chromeMsg/send.js';
+import {onStartupRunContentScript} from './chromeMsg/send.js';
 
 let lastGuessList = []
 
-runGetGuessesAsContentScript()
+onStartupRunContentScript()
 addEventListeners();
 let refresh = document.getElementById("refresh");
-refresh.addEventListener("click", runGetGuessesAsContentScript)
+refresh.addEventListener("click", onStartupRunContentScript)
 
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
