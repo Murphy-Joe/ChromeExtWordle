@@ -1,4 +1,4 @@
-export const getAndSendGuesses = () => {
+export const getAndSendGuesses_addGuessSelectionReceiver = () => {
   let storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
   const guesses = storage.boardState
 
