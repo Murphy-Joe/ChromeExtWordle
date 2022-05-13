@@ -1,6 +1,8 @@
+import { sendMsgToContentScriptFillInGuess } from '../chromeMsg/send.js';
+
 let wordsContainer = document.getElementById("wordsLeft-page-container")
 
-export async function createWordsLeftPage(resp) {
+export function createWordsLeftPage(resp) {
     let uiFlipDelay = 0;
     resp.targets.forEach(word => {
         let wordBox = document.createElement("flex");
@@ -9,8 +11,9 @@ export async function createWordsLeftPage(resp) {
         uiFlipDelay += 0.025;
         wordsContainer.appendChild(wordBox);
         wordBox.innerText = word.toUpperCase();
-        // wordBtn.addEventListener("click", () => {})
-        // send msg to content script to fill in each letter
+        wordBox.addEventListener("click", () => {
+            sendMsgToContentScriptFillInGuess(word);
+        })
     });
 }
 

@@ -1,9 +1,7 @@
 import {addElementListeners} from './eventListeners/elementListeners.js';
 import {receiveGuesses} from './chromeMsg/receive.js';
+import {sendMsgToContentScriptGetAndSendGuesses} from './chromeMsg/send.js';
 
-import {getAndSendGuesses} from './contentScripts/contentScript.js';
-import {sendMsgToContentScript} from './chromeMsg/send.js';
-
-sendMsgToContentScript(getAndSendGuesses)
+sendMsgToContentScriptGetAndSendGuesses()
 addElementListeners();
 receiveGuesses()
