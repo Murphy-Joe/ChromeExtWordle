@@ -1,4 +1,4 @@
-import {createWordsLeftPage} from '../dataPages/wordsLeftBoxes.js';
+import {createWordsLeftPage} from '../dataDisplay/wordsLeftBoxes.js';
 import {wordsLeftApiResp} from '../api/apiCalls.js';
 import {executeApiCallsFromGuesses} from '../execution/executionScript.js';
 

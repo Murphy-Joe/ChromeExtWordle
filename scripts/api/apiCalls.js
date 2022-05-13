@@ -1,5 +1,5 @@
 import {populateLettersChartData, populateBestGuessesChart} from '../charts/chartCreators.js';
-import {fillInWordsLeftTiles, loadingWordsLeftTiles} from '../dataDisplay/wordsLeft.js';
+import {fillInWordsLeftTiles, loadingWordsLeftTiles} from '../landingTiles/wordsLeft.js';
 
 export let wordsLeftApiResp;
 
