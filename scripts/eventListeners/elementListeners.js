@@ -48,5 +48,5 @@ export function addElementListeners() {
         })
     })
 
-    refresh.addEventListener("click", sendMsgToContentScript(getAndSendGuesses))
+    refresh.addEventListener("click", () => sendMsgToContentScript(getAndSendGuesses))
 }
