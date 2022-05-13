@@ -10,7 +10,7 @@ import { getAndSendGuesses } from '../contentScripts/contentScript.js';
 //   });
 // }
 
-export function sendMsgToContentScriptGetAndSendGuesses() {
+export function executeContentScriptGetAndSendGuesses() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.scripting.executeScript({
       target: { tabId: tabs[0].id },
