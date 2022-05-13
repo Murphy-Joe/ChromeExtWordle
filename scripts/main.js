@@ -4,21 +4,19 @@ import {getGuesses} from './content/contentScript.js';
 
 let lastGuessList = []
 
-function runContentScript() {
+function runGetGuessesAsContentScript() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    // command to execute a content script
     chrome.scripting.executeScript({
       target: { tabId: tabs[0].id },
       function: getGuesses,
-
     });
   });
 }
 
-runContentScript()
+runGetGuessesAsContentScript()
 addEventListeners();
 let refresh = document.getElementById("refresh");
-refresh.addEventListener("click", runContentScript)
+refresh.addEventListener("click", runGetGuessesAsContentScript)
 
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
