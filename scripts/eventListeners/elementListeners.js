@@ -1,6 +1,6 @@
 import {createWordsLeftPage} from '../dataPages/wordsLeftBoxes.js';
 import {wordsLeftApiResp} from '../api/apiCalls.js';
-import {executeApiCallsFromGuesses} from '../chromeMsg/send.js';
+import {executeApiCallsFromGuesses} from '../execution/executionScript.js';
 
 let wordsLeft = document.getElementById("wordsLeft")
 
