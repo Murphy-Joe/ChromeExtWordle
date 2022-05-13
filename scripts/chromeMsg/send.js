@@ -1,10 +1,10 @@
-import { getAndSendGuesses } from '../contentScripts/contentScript.js';
+import { getAndSendGuesses } from '../executionScript/executeScript.js';
 
 export function executeContentScriptGetAndSendGuesses() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.scripting.executeScript({
       target: { tabId: tabs[0].id },
-      // reminder: the following function may not call other functions
+      // reminder: the following EXECUTION function may not call other functions
       function: getAndSendGuesses
     });
   });
