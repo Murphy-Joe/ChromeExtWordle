@@ -1,17 +1,8 @@
 import {addEventListeners} from './eventListeners/listeners.js';
 import {callApis} from './api/apiCalls.js';
-import {getGuesses} from './content/contentScript.js';
+import {runGetGuessesAsContentScript} from './chromeMsg/send.js';
 
 let lastGuessList = []
-
-function runGetGuessesAsContentScript() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.scripting.executeScript({
-      target: { tabId: tabs[0].id },
-      function: getGuesses,
-    });
-  });
-}
 
 runGetGuessesAsContentScript()
 addEventListeners();
