@@ -1,5 +1,4 @@
-
-export function getGuesses() {
+export function getAndSendGuesses() {
     let storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
     const guesses = storage.boardState
   
