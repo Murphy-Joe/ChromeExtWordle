@@ -1,23 +1,11 @@
-import {addEventListeners} from './eventListeners/listeners.js';
+import {addElementListeners} from './eventListeners/elementListeners.js';
 import {callApis} from './api/apiCalls.js';
-import {getGuesses} from './content/contentScript.js';
+import {getGuesses, runGetGuessesAsContentScript} from './content/contentScript.js';
 
 let lastGuessList = []
 
-function runGetGuessesAsContentScript() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.scripting.executeScript({
-      target: { tabId: tabs[0].id },
-      function: getGuesses,
-    });
-  });
-}
-
 runGetGuessesAsContentScript()
-addEventListeners();
-let refresh = document.getElementById("refresh");
-refresh.addEventListener("click", runGetGuessesAsContentScript)
-
+addElementListeners();
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (JSON.stringify(msg.guesses) !== JSON.stringify(lastGuessList)) {

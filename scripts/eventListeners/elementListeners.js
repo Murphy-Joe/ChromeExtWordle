@@ -1,5 +1,6 @@
 import {createWordsLeftPage} from '../dataPages/wordsLeftBoxes.js';
 import {wordsLeftApiResp} from '../api/apiCalls.js';
+import {runGetGuessesAsContentScript} from '../content/contentScript.js';
 
 let wordsLeft = document.getElementById("wordsLeft")
 
@@ -17,7 +18,9 @@ let bestGuessPage = document.getElementById("bestGuessPage")
 
 let backButtons = document.querySelectorAll(".back")
 
-export function addEventListeners() {
+let refresh = document.getElementById("refresh");
+
+export function addElementListeners() {
     wordsLeft.addEventListener("click", () => {
         document.querySelectorAll('.word-box').forEach((elem) => elem.remove());
         wordsLeftPage.classList.remove("hidden")
@@ -42,4 +45,6 @@ export function addEventListeners() {
             btn.parentElement.parentElement.classList.add("hidden")
         })
     })
+
+    refresh.addEventListener("click", runGetGuessesAsContentScript)
 }
