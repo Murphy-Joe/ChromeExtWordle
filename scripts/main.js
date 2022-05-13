@@ -1,11 +1,11 @@
-import {addEventListeners} from './eventListeners/listeners.js';
+import {addElementListeners} from './eventListeners/elementListeners.js';
 import {callApis} from './api/apiCalls.js';
 import {onStartupRunContentScript} from './chromeMsg/send.js';
 
 let lastGuessList = []
 
 onStartupRunContentScript()
-addEventListeners();
+addElementListeners();
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (JSON.stringify(msg.guesses) !== JSON.stringify(lastGuessList)) {

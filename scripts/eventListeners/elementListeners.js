@@ -21,7 +21,7 @@ let backButtons = document.querySelectorAll(".back")
 let refresh = document.getElementById("refresh")
 
 
-export function addEventListeners() {
+export function addElementListeners() {
     wordsLeft.addEventListener("click", () => {
         document.querySelectorAll('.word-box').forEach((elem) => elem.remove());
         wordsLeftPage.classList.remove("hidden")
