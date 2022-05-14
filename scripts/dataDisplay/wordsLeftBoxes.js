@@ -1,4 +1,4 @@
-import { sendMsgToContentScriptFillInGuess } from '../chromeMsg/send.js';
+import { sendMsgToContentScriptFillInGuess } from '../msg/send.js';
 
 let wordsContainer = document.getElementById("wordsLeft-page-container")
 

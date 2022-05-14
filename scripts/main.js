@@ -1,5 +1,5 @@
 import {addElementListeners} from './eventListeners/elementListeners.js';
-import {receiveGuesses} from './chromeMsg/receive.js';
+import {receiveGuesses} from './msg/receive.js';
 import { executeContentScript, getGuessesAndSendBackToExtension, receiveGuessSelectionAndPopulateTiles } from './content/contentScript.js';
 
 executeContentScript(getGuessesAndSendBackToExtension)
