@@ -1,8 +1,8 @@
 import {addElementListeners} from './eventListeners/elementListeners.js';
 import {receiveGuesses} from './chromeMsg/receive.js';
-import {executeApiCallsFromGuesses, executeGuessSelectionReceiver} from './execution/executionScript.js';
+import { executeContentScript, getGuessesAndSendBackToExtension, receiveGuessSelectionAndPopulateTiles } from './content/contentScript.js';
 
-executeApiCallsFromGuesses()
-executeGuessSelectionReceiver()
+executeContentScript(getGuessesAndSendBackToExtension)
+executeContentScript(receiveGuessSelectionAndPopulateTiles)
 addElementListeners();
 receiveGuesses()

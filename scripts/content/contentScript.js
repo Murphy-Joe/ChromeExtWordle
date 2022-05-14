@@ -1,4 +1,14 @@
-export const getGuessesFromContentPageAndSendBackToExtension = () => {
+export function executeContentScript(passedInFunction) {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.scripting.executeScript({
+      target: { tabId: tabs[0].id },
+      // reminder: the following EXECUTION function may not call other functions
+      function: passedInFunction
+    });
+  });
+}
+
+export const getGuessesAndSendBackToExtension = () => {
   let storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
   const guesses = storage.boardState
 
