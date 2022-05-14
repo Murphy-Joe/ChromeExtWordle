@@ -1,6 +1,6 @@
 import {createWordsLeftPage} from '../dataDisplay/wordsLeftBoxes.js';
 import {wordsLeftApiResp} from '../api/apiCalls.js';
-import {executeApiCallsFromGuesses} from '../execution/executionScript.js';
+import {executeContentScript, getGuessesAndSendBackToExtension} from '../content/contentScript.js';
 
 let wordsLeft = document.getElementById("wordsLeft")
 
@@ -47,5 +47,5 @@ export function addElementListeners() {
         })
     })
 
-    refresh.addEventListener("click", () => executeApiCallsFromGuesses)
+    refresh.addEventListener("click", () => executeContentScript(getGuessesAndSendBackToExtension))
 }
