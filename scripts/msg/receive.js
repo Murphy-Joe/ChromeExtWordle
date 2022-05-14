@@ -2,7 +2,7 @@ import { callApis } from '../api/apiCalls.js';
 
 let lastGuessList = []
 
-export function receiveGuesses() {
+export function receiveGuessesAndCallApis() {
   chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     sendResponse({ farewell: "goodbye" }) // here till bug fix in chrome 102
     if (msg.guesses && JSON.stringify(msg.guesses) !== JSON.stringify(lastGuessList)) {
