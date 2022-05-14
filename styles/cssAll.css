@@ -40,3 +40,11 @@ flex-y {
 flex-y {
   flex-direction: column;
 }
+
+.secondary-page-size {
+  width: 400px;
+}
+
+.absolute {
+  position: absolute;
+}

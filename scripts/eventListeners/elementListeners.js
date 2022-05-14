@@ -1,6 +1,7 @@
 import {createWordsLeftPage} from '../dataDisplay/wordsLeftBoxes.js';
 import {wordsLeftApiResp} from '../api/apiCalls.js';
-import {executeContentScript, getGuessesAndSendBackToExtension} from '../content/contentScript.js';
+
+let body = document.querySelector('body');
 
 let wordsLeft = document.getElementById("wordsLeft")
 
@@ -23,6 +24,7 @@ let backButtons = document.querySelectorAll(".back")
 
 export function addElementListeners() {
     wordsLeft.addEventListener("click", () => {
+        body.classList.add("secondary-page-size")
         document.querySelectorAll('.word-box').forEach((elem) => elem.remove());
         wordsLeftPage.classList.remove("hidden")
         landingPage.classList.add("hidden")
@@ -30,18 +32,20 @@ export function addElementListeners() {
     })
 
     bestLetters.addEventListener("click", () => {
+        body.classList.add("secondary-page-size")
         bestLettersPage.classList.remove("hidden")
         landingPage.classList.add("hidden")
     })
 
     bestGuess.addEventListener("click", () => {
-        // populateBestGuessesChart(HardCodedBestGuesses)
+        body.classList.add("secondary-page-size")
         bestGuessPage.classList.remove("hidden")
         landingPage.classList.add("hidden")
     })
 
     backButtons.forEach(btn => {
         btn.addEventListener("click", () => {
+            body.classList.remove("secondary-page-size")
             landingPage.classList.remove("hidden")
             btn.parentElement.parentElement.classList.add("hidden")
         })

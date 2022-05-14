@@ -5,10 +5,6 @@
     height: inherit;
 }
 
-.title-bar {
-  position: absolute;
-}
-
 .landing-page-container {
   flex-wrap: wrap;
   justify-content: space-evenly;
