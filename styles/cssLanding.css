@@ -1,13 +1,19 @@
 @import url('https://css.gg/sync.css');
 @import url('https://css.gg/loadbar.css');
 
+#landingPage {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: inherit;
+}
 
 .landing-page-container {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
-#refresh {
+/* #refresh {
   align-self: end;
   margin-right: 6%;
   margin-bottom: 8px;
@@ -17,7 +23,7 @@
 
 #refresh:hover {
   transform: rotate(90deg);
-}
+} */
 
 .landing-container {
   justify-content: space-evenly;
@@ -26,7 +32,7 @@
 
 .tiles-container {
   justify-content: space-evenly;
-  width: 90%;
+  width: 96%;
   transition-property: opacity, content, color;
   transition-duration: .25s;
   transition-timing-function: ease-in-out;
@@ -79,8 +85,8 @@
 
 .tiles {
   font-size: 2em;
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
 }
 
 /*#region Color Best Letter Tiles*/

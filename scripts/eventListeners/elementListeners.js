@@ -18,10 +18,7 @@ let bestGuessPage = document.getElementById("bestGuessPage")
 
 let backButtons = document.querySelectorAll(".back")
 
-let refresh = document.getElementById("refresh")
-
-let letterChart = document.getElementById("letterChart")
-let guessChart = document.getElementById("guessChart")
+// let refresh = document.getElementById("refresh")
 
 
 export function addElementListeners() {
@@ -50,5 +47,5 @@ export function addElementListeners() {
         })
     })
 
-    refresh.addEventListener("click", () => executeContentScript(getGuessesAndSendBackToExtension))
+    // refresh.addEventListener("click", () => executeContentScript(getGuessesAndSendBackToExtension))
 }
