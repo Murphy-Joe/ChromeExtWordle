@@ -1,3 +1,5 @@
+import {sendMsgToContentScriptFillInGuess} from '../msg/send.js';
+
 function createLetterChart(dataObj) {
   const newData = {
     datasets: [{
@@ -47,11 +49,9 @@ function createGuessChart(dataObj) {
         console.log(activePoints); 
         if (activePoints.length > 0) {
           const index = activePoints[0].index;
-          console.log(index);
           const dataEntries = Object.entries(dataObj);
-          console.log(dataEntries);
           const guess = dataEntries[index][0];
-          console.log(guess);
+          sendMsgToContentScriptFillInGuess(guess);
         }     
       },
       plugins: {
