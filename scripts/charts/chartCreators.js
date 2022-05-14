@@ -46,7 +46,6 @@ function createGuessChart(dataObj) {
         const activePoints = myChart.getElementsAtEventForMode(e, 'nearest', {
           intersect: true
         }, false)
-        console.log(activePoints); 
         if (activePoints.length > 0) {
           const index = activePoints[0].index;
           const dataEntries = Object.entries(dataObj);

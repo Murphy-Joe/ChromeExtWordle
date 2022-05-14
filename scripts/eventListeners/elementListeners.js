@@ -51,8 +51,4 @@ export function addElementListeners() {
     })
 
     refresh.addEventListener("click", () => executeContentScript(getGuessesAndSendBackToExtension))
-
-    guessChart.addEventListener("click", (evt) => {
-        console.log(evt);
-    })
 }

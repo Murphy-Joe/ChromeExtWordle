@@ -13,7 +13,7 @@ export const getGuessesAndSendBackToExtension = () => {
   const guesses = storage.boardState
 
   chrome.runtime.sendMessage({ guesses: guesses }, (response) => {
-    console.log(`sent guesses: ${JSON.stringify(guesses)}`)
+    // console.log(`sent guesses: ${JSON.stringify(guesses)}`)
     // response here till bug fixed in chrome 102
   })
   
@@ -24,7 +24,7 @@ export const getGuessesAndSendBackToExtension = () => {
 export function receiveGuessSelectionAndPopulateTiles() {
   chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     sendResponse({ farewell: "goodbye" }) // here till bug fix in chrome 102
-    console.log(`IM LISTENING! I was sent a message: ${JSON.stringify(msg)}`);
+    // console.log(`IM LISTENING! I was sent a message: ${JSON.stringify(msg)}`);
     if (msg.selectedGuess) {
       fillInGuess(msg.selectedGuess)
     }
