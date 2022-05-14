@@ -20,6 +20,9 @@ let backButtons = document.querySelectorAll(".back")
 
 let refresh = document.getElementById("refresh")
 
+let letterChart = document.getElementById("letterChart")
+let guessChart = document.getElementById("guessChart")
+
 
 export function addElementListeners() {
     wordsLeft.addEventListener("click", () => {
@@ -48,4 +51,8 @@ export function addElementListeners() {
     })
 
     refresh.addEventListener("click", () => executeContentScript(getGuessesAndSendBackToExtension))
+
+    guessChart.addEventListener("click", (evt) => {
+        console.log(evt);
+    })
 }
