@@ -2,10 +2,11 @@
 @import url('https://css.gg/loadbar.css');
 
 #landingPage {
-  display: flex;
-    flex-direction: column;
-    justify-content: center;
     height: inherit;
+}
+
+.title-bar {
+  position: absolute;
 }
 
 .landing-page-container {

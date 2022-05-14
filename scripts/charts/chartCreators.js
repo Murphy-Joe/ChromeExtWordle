@@ -82,7 +82,7 @@ export function populateLettersChartData(apiResp) {
 export function populateBestGuessesChart(apiResp) {
   // myChart.destroy();
   let chartData = {}
-  apiResp.slice(0, 10).forEach(guessTuple => {
+  apiResp.slice(0, 8).forEach(guessTuple => {
     chartData[guessTuple[0]] = guessTuple[1];
   })
   createGuessChart(chartData);

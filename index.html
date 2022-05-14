@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div id="landingPage">
+  <flex-y id="landingPage">
     <flex-y class="landing-page-container">
       <!-- <flex id="refresh"><i class="gg-sync"></i></flex> -->
 
@@ -41,27 +41,25 @@
         </flex>
       </flex>
     </flex-y>
-  </div>
+  </flex-y>
 
   <div id="wordsLeftPage" class="hidden">
-    <flex class="title-bar">
+    <div class="title-bar">
       <div class="back">
         <i class="gg-arrow-left"></i>
       </div>
-      <div class="title">
-      </div>
-    </flex>
+    </div>
     <flex id="wordsLeft-page-container">
       <!-- buttons -->
     </flex>
   </div>
 
   <div id="lettersPage" class="hidden">
-    <flex class="title-bar">
+    <div class="title-bar">
       <div class="back">
         <i class="gg-arrow-left"></i>
       </div>
-    </flex>
+    </div>
 
     <flex id="letters-page-container">
       <canvas id="letterChart"></canvas>
@@ -69,11 +67,11 @@
   </div>
 
   <div id="bestGuessPage" class="hidden">
-    <flex class="title-bar">
+    <div class="title-bar">
       <div class="back">
         <i class="gg-arrow-left"></i>
       </div>
-    </flex>
+    </div>
 
     <flex id="guess-page-container">
       <canvas id="guessChart"></canvas>
