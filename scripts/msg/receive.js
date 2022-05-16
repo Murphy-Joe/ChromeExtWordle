@@ -7,7 +7,7 @@ export function receiveGuessesAndCallApis() {
       callApis(msg)
     }
     else {
-      console.log('no changes');
+      console.log('did not call APIs');
     }
   });
 }
