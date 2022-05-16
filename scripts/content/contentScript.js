@@ -9,15 +9,14 @@ export function executeContentScript(passedInFunction) {
 }
 
 export const getGuessesAndSendBackToExtension = () => {
-  let storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
-  const guesses = storage.boardState
+  const storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
 
-  chrome.runtime.sendMessage({ guesses: guesses }, (response) => {
+  chrome.runtime.sendMessage({ storage: storage }, (response) => {
     // console.log(`sent guesses: ${JSON.stringify(guesses)}`)
     // response here till bug fixed in chrome 102
   })
   
-  return guesses;
+  return storage;
 }
 
 
