@@ -33,12 +33,13 @@ export function receiveGuessSelectionAndPopulateTiles() {
     let storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
     const guesses = storage.boardState
 
-    const rowNthChild = getRowNthChild(guesses)
-    const selectedRow = getNthChildRow(rowNthChild)
-    const gameTiles = getGameTiles(selectedRow)
-    fillInTiles(gameTiles, guess)
+    const rowIdx = getRowIdx(guesses)
+    const selectedRow = getNthChildRow(rowIdx)
+    fillInSelectedRow(selectedRow, guess)
+    // const gameTiles = getGameTiles(selectedRow)
+    // fillInTiles(gameTiles, guess)
 
-    function getRowNthChild(guesses) {
+    function getRowIdx(guesses) {
       let nth = 1
       guesses.forEach((guess) => {
         if (guess) nth += 1
@@ -49,6 +50,10 @@ export function receiveGuessSelectionAndPopulateTiles() {
     function getNthChildRow(nthChild) {
       const selectedRow = document.querySelector("body > game-app").shadowRoot.querySelector(`#board > game-row:nth-child(${nthChild})`)
       return selectedRow;
+    }
+
+    function fillInSelectedRow(selectedRow, guess) {
+      selectedRow.setAttribute("letters", guess)
     }
 
     function getGameTiles(selectedRow) {
