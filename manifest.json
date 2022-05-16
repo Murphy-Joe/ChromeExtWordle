@@ -1,7 +1,7 @@
 {
-  "name": "Wordler",
-  "description": "Wordler shows how many words remain and provides a light yet powerful guessing algorithm!",
-  "version": "1.0",
+  "name": "ReWordle",
+  "description": "Wordler provides Wordle insights from its light yet powerful guessing algorithm!",
+  "version": "1.0.0",
   "manifest_version": 3,
   "permissions": [
     "storage",
