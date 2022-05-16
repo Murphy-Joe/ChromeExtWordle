@@ -1,6 +1,6 @@
 {
   "name": "ReWordle",
-  "description": "Wordler provides Wordle insights from its light yet powerful guessing algorithm!",
+  "description": "ReWordle provides Wordle insights through its light yet powerful guessing algorithm!",
   "version": "1.0.0",
   "manifest_version": 3,
   "permissions": [
