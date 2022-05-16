@@ -3,9 +3,9 @@ import {fillInWordsLeftTiles, loadingWordsLeftTiles} from '../landingTiles/words
 
 export let wordsLeftApiResp;
 
-export async function callApi(storage, endpoint) {
-  const payload = { guesses: storage.boardState,
-  target: storage.solution }
+export async function callApi(msg, endpoint) {
+  const payload = { guesses: msg.storage.boardState,
+  target: msg.storage.solution }
   const response = await fetch(`https://1vv6d7.deta.dev/${endpoint}`, {
     method: 'POST',
     headers: {
@@ -18,20 +18,20 @@ export async function callApi(storage, endpoint) {
   return resp;
 }
 
-export function callApis(storage) {
+export function callApis(msg) {
   loadingWordsLeftTiles();
-  callApi(storage, "targetsleft")
+  callApi(msg, "targetsleft")
     .then(resp => {
       fillInWordsLeftTiles(resp);
       wordsLeftApiResp = resp;
     })
 
-  callApi(storage, "bestletters")
+  callApi(msg, "bestletters")
     .then(resp => {
       populateLettersChartData(resp)
     })
 
-  callApi(storage, "algo")
+  callApi(msg, "algo")
     .then(resp => {
       populateBestGuessesChart(resp)
     })
