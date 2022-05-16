@@ -1,6 +1,9 @@
 /* @import url('https://css.gg/sync.css'); */
 @import url('https://css.gg/loadbar.css');
-@import url('https://css.gg/filters.css');
+@import url('https://css.gg/sort-az.css');
+@import url('https://css.gg/loadbar-alt.css');
+@import url('https://css.gg/loadbar-doc.css');
+@import url('https://css.gg/loadbar-sound.css');
 
 #landingPage {
     height: inherit;

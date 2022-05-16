@@ -14,7 +14,7 @@ export function loadingWordsLeftTiles() {
   wordsLeftTiles.forEach(tile => {
     tile.innerText = ""
     let iconSpan = document.createElement("span");
-    iconSpan.className = "gg-loadbar";
+    iconSpan.className = "gg-loadbar-alt";
     tile.appendChild(iconSpan);
   }
   )
