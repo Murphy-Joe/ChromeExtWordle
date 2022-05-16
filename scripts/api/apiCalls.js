@@ -1,5 +1,5 @@
 import {populateLettersChartData, populateBestGuessesChart} from '../charts/chartCreators.js';
-import {fillInWordsLeftTiles, loadingWordsLeftTiles} from '../landingTiles/wordsLeft.js';
+import {fillInWordsLeftTiles, loadingWordsLeftTiles, loadingbestGuessTiles, fillInBestGuessTiles} from '../landingTiles/wordsLeft.js';
 
 export let wordsLeftApiResp;
 
@@ -20,6 +20,8 @@ export async function callApi(msg, endpoint) {
 
 export function callApis(msg) {
   loadingWordsLeftTiles();
+  loadingbestGuessTiles();
+  
   callApi(msg, "targetsleft")
     .then(resp => {
       fillInWordsLeftTiles(resp);
@@ -33,6 +35,7 @@ export function callApis(msg) {
 
   callApi(msg, "algo")
     .then(resp => {
+      fillInBestGuessTiles();
       populateBestGuessesChart(resp)
     })
     .catch(err => {

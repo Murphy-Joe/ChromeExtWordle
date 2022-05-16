@@ -1,4 +1,15 @@
 let wordsLeftTiles = document.querySelectorAll("#wordsLeft .tiles");
+let bestGuessTiles = document.querySelectorAll("#bestGuess .tiles");
+
+export function loadingWordsLeftTiles() {
+  wordsLeftTiles.forEach(tile => {
+    tile.innerText = ""
+    const iconSpan = document.createElement("span");
+    iconSpan.className = "gg-loadbar-alt";
+    tile.appendChild(iconSpan);
+  }
+  )
+}
 
 export function fillInWordsLeftTiles(resp) {
   wordsLeftTiles.forEach(tile => { tile.innerText = "" })
@@ -10,12 +21,19 @@ export function fillInWordsLeftTiles(resp) {
   }
 }
 
-export function loadingWordsLeftTiles() {
-  wordsLeftTiles.forEach(tile => {
-    tile.innerText = ""
-    let iconSpan = document.createElement("span");
+export function loadingbestGuessTiles() {
+  bestGuessTiles.forEach(tile => {
+    const iconSpan = document.createElement("span");
     iconSpan.className = "gg-loadbar-alt";
     tile.appendChild(iconSpan);
   }
   )
 }
+
+export function fillInBestGuessTiles() {
+  bestGuessTiles.forEach(tile => { 
+    const span = tile.querySelector("span");
+    span.classList.remove("gg-loadbar-alt");
+  })
+}
+
