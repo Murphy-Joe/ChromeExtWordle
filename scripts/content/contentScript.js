@@ -40,7 +40,6 @@ export function receiveGuessSelectionAndPopulateTiles() {
           key: letter
         }
       });
-      console.log(gameKeyPressEvent);
       game.dispatchEvent(gameKeyPressEvent);
     }
   }
