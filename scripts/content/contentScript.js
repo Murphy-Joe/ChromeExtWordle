@@ -26,18 +26,38 @@ export function receiveGuessSelectionAndPopulateTiles() {
     sendResponse({ farewell: "goodbye" }) // here till bug fix in chrome 102
     // console.log(`IM LISTENING! I was sent a message: ${JSON.stringify(msg)}`);
     if (msg.selectedGuess) {
-      fillInGuess(msg.selectedGuess)
+      const game = document.querySelector("#game")
+      for (let letter of msg.selectedGuess){
+        game.dispatchEvent("game-key-press", {detail: {key: letter}})
+      }
+      // fillInGuess(msg.selectedGuess)
     }
   });
+
+
   function fillInGuess(guess) {
     let storage = JSON.parse(localStorage.getItem("nyt-wordle-state"))
     const guesses = storage.boardState
+    const game = document.getElementById("game")
 
-    const rowIdx = getRowIdx(guesses)
-    const selectedRow = getNthChildRow(rowIdx)
-    fillInSelectedRow(selectedRow, guess)
+
+    // const rowIdx = getRowIdx(guesses)
+    // const selectedRow = getNthChildRow(rowIdx)
+    // fillInSelectedRow(selectedRow, guess)
     // const gameTiles = getGameTiles(selectedRow)
     // fillInTiles(gameTiles, guess)
+
+    function dispatchGameKeyPressEvents(guess){
+      for (let letter of guess){
+        game.dispatchEvent("game-key-press", {detail: {key: letter}})
+        // const gameKeyPressEvent = new KeyboardEvent("keydown", {
+        //   bubbles: true,
+        //   cancelable: true,
+        //   key: letter
+        // })
+        // game.dispatchEvent(gameKeyPressEvent)
+      }
+    }
 
     function getRowIdx(guesses) {
       let nth = 1
