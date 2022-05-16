@@ -3,14 +3,13 @@ import {fillInWordsLeftTiles, loadingWordsLeftTiles} from '../landingTiles/words
 
 export let wordsLeftApiResp;
 
-export async function callApi(msg, endpoint) {
-  const guessPayload = { guesses: msg.guesses }
+export async function callApi(boardState, endpoint) {
+  const guessPayload = { guesses: boardState.guesses }
   const response = await fetch(`https://1vv6d7.deta.dev/${endpoint}`, {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
     },
-
     body: JSON.stringify(guessPayload)
   })
   const resp = await response.json();
@@ -18,20 +17,20 @@ export async function callApi(msg, endpoint) {
   return resp;
 }
 
-export function callApis(msg) {
+export function callApis(boardState) {
   loadingWordsLeftTiles();
-  callApi(msg, "targetsleft")
+  callApi(boardState, "targetsleft")
     .then(resp => {
       fillInWordsLeftTiles(resp);
       wordsLeftApiResp = resp;
     })
 
-  callApi(msg, "bestletters")
+  callApi(boardState, "bestletters")
     .then(resp => {
       populateLettersChartData(resp)
     })
 
-  callApi(msg, "algo")
+  callApi(boardState, "algo")
     .then(resp => {
       populateBestGuessesChart(resp)
     })
