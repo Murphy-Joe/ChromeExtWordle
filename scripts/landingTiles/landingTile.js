@@ -2,12 +2,17 @@ export let wordsLeftTiles = document.querySelectorAll("#wordsLeft .tiles");
 export let bestGuessTiles = document.querySelectorAll("#bestGuess .tiles");
 export let bestLettersTiles = document.querySelectorAll("#bestLetters .tiles");
 
+
+function appendIconToElem(iconClassName, elem) {
+  const iconSpan = document.createElement("span");
+    iconSpan.className = iconClassName;
+    elem.appendChild(iconSpan);
+}
+
 function addLoadingBars(containerElem) {
   containerElem.forEach(tile => {
     tile.innerText = ""
-    const iconSpan = document.createElement("span");
-    iconSpan.className = "gg-loadbar-alt";
-    tile.appendChild(iconSpan);
+    appendIconToElem("gg-loadbar-alt", tile);
   })
 }
 
@@ -33,5 +38,5 @@ export function fillInWordsLeftTiles(resp) {
     wordsLeftTiles[wordsLeftTilesIdx].innerText = resp.count.toString()[i - 1]
     wordsLeftTilesIdx--;
   }
-  wordsLeftTiles.item(0).innerText = 'H'
+  appendIconToElem("gg-align-center", wordsLeftTiles.item(0));
 }
