@@ -2,8 +2,9 @@
   --darker: #b9c6d2;
 	--middle: #d0dde9;
 	--lighter: #edf0f8;
-  --dark-text: rgb(65, 65, 65);
+  --dark-text: #414141;
   --darker-text: #3a3a3c;
+  --green-text: #33602f;
   --green-tile: #6aaa64;
   --yellow-tile: #c9b458;
   --gray-tile: var(--darker-text);
