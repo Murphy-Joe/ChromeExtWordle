@@ -1,7 +1,23 @@
-@import url('https://css.gg/sort-az.css');
 @import url('https://css.gg/loadbar-alt.css');
 @import url('https://css.gg/align-center.css');
 @import url('https://css.gg/calculator.css');
+
+.abc {
+    height: 54px;
+    width: 54px;
+    background-image: url(https://img.icons8.com/ios-glyphs/60/a6b1dc/abc.png);
+    transform: scale(0.5);
+}
+
+.gg-align-center{
+    color: var(--faded-text-on-green);
+}
+
+.gg-calculator {
+    color: var(--faded-text-on-yellow);
+}
+
+
 
 
 
