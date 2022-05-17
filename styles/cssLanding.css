@@ -1,10 +1,3 @@
-/* @import url('https://css.gg/sync.css'); */
-@import url('https://css.gg/loadbar.css');
-@import url('https://css.gg/sort-az.css');
-@import url('https://css.gg/loadbar-alt.css');
-@import url('https://css.gg/loadbar-doc.css');
-@import url('https://css.gg/loadbar-sound.css');
-
 #landingPage {
     height: inherit;
 }
@@ -13,18 +6,6 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
-/* #refresh {
-  align-self: end;
-  margin-right: 6%;
-  margin-bottom: 8px;
-  color: var(--darker-text);
-  transition: transform .25s ease-out;
-}
-
-#refresh:hover {
-  transform: rotate(90deg);
-} */
 
 .landing-container {
   justify-content: space-evenly;
