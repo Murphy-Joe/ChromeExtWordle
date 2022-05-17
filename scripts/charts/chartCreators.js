@@ -4,7 +4,7 @@ function createLetterChart(dataObj) {
   const newData = {
     datasets: [{
       data: dataObj,
-      backgroundColor: '#6aaa64',
+      backgroundColor: '#3a3a3c',
       borderColor: 'rgba(0, 0, 0, 0.1)',
     }]
   }
@@ -34,7 +34,7 @@ function createGuessChart(dataObj) {
   const newData = {
     datasets: [{
       data: dataObj,
-      backgroundColor: '#6aaa64',
+      backgroundColor: '#c9b458',
       borderColor: 'rgba(0, 0, 0, 0.1)',
     }]
   }
@@ -59,7 +59,7 @@ function createGuessChart(dataObj) {
         },
         title: {
           display: true,
-          text: 'Avg Words Left per Guess'
+          text: 'Avg Words Left After Guess'
         }
       }
     }

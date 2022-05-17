@@ -36,17 +36,18 @@
   width: 25%;
   height: 34px;
   border: #e8ecf6 1px solid;
+  background-color: var(--green-tile);
+  color: #e8ecf6;
   letter-spacing: 0.9px;
   box-sizing: border-box;
   animation: flipInX 1.5s ease-in-out;
   transition-property: background-color, color;
   transition-duration: .15s;
   transition-timing-function: ease-in-out;
-
 }
 
 .word-box:hover {
-  background-color: var(--green-tile);
-  color: #e8ecf6;
+  background-color: unset;
+  color: unset;
   cursor: pointer;
 }
