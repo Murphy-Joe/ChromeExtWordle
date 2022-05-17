@@ -1,7 +1,7 @@
 import {populateLettersChartData, populateBestGuessesChart} from '../charts/chartCreators.js';
-import {fillInWordsLeftTiles, loadingWordsLeftTiles, loadingbestGuessTiles, fillInBestGuessTiles} from '../landingTiles/landingTile.js';
+import {wordsLeftTiles, bestGuessTiles, bestLettersTiles, addLoadingBarsToAllTiles, removeLoadingBars, fillInWordsLeftTiles} from '../landingTiles/landingTile.js';
 
-export let wordsLeftApiResp;
+export let wordsLeftApiResp; // hack
 
 export async function callApi(msg, endpoint) {
   const payload = { guesses: msg.storage.boardState,
@@ -19,23 +19,24 @@ export async function callApi(msg, endpoint) {
 }
 
 export function callApis(msg) {
-  loadingWordsLeftTiles();
-  loadingbestGuessTiles();
+  addLoadingBarsToAllTiles();
   
   callApi(msg, "targetsleft")
     .then(resp => {
+      removeLoadingBars(wordsLeftTiles);
       fillInWordsLeftTiles(resp);
       wordsLeftApiResp = resp;
     })
 
   callApi(msg, "bestletters")
     .then(resp => {
+      removeLoadingBars(bestLettersTiles);
       populateLettersChartData(resp)
     })
 
   callApi(msg, "algo")
     .then(resp => {
-      fillInBestGuessTiles();
+      removeLoadingBars(bestGuessTiles);
       populateBestGuessesChart(resp)
     })
     .catch(err => {
