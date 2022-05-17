@@ -87,7 +87,8 @@
 
 .gray-tile,
 .green-tile,
-.yellow-tile {
+.yellow-tile, 
+.light-gray-tile {
   margin: 1px;
 }
 
@@ -102,5 +103,10 @@
 
 .yellow-tile {
   background-color: #c9b458;
-  color: rgb(65, 65, 65);
+  color: #414141;
+}
+
+.light-gray-tile {
+  background-color: var(--gray-tile-light);
+  color: #414141;
 }

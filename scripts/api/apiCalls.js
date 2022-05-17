@@ -1,5 +1,5 @@
 import {populateLettersChartData, populateBestGuessesChart} from '../charts/chartCreators.js';
-import {wordsLeftTiles, bestGuessTiles, bestLettersTiles, addLoadingBarsToAllTiles, removeLoadingBars, fillInWordsLeftTiles} from '../landingTiles/landingTile.js';
+import {wordsLeftTiles, bestGuessTiles, bestLettersTiles, addLoadingBarsToAllTiles, removeLoadingBars, fillInWordsLeftTiles, fillInBestGuessTiles} from '../landingTiles/landingTile.js';
 
 export let wordsLeftApiResp; // hack
 
@@ -37,6 +37,7 @@ export function callApis(msg) {
   callApi(msg, "algo")
     .then(resp => {
       removeLoadingBars(bestGuessTiles);
+      fillInBestGuessTiles(resp);
       populateBestGuessesChart(resp)
     })
     .catch(err => {

@@ -32,11 +32,34 @@ export function addLoadingBarsToAllTiles() {
 
 export function fillInWordsLeftTiles(resp) {
   wordsLeftTiles.forEach(tile => { tile.innerText = "" })
-  let wordsLeftTilesIdx = 4;
-  let digitsInAmtWordsLeft = resp.count.toString().length;
-  for (let i = digitsInAmtWordsLeft; i > 0; i--) {
-    wordsLeftTiles[wordsLeftTilesIdx].innerText = resp.count.toString()[i - 1]
-    wordsLeftTilesIdx--;
+  let lastDigitIdx = resp.count.toString().length - 1;
+  for (let i = 4; i > 0; i--) {
+    if (lastDigitIdx >= 0) {
+      wordsLeftTiles[i].innerText = resp.count.toString()[lastDigitIdx]
+    }
+    else {
+      wordsLeftTiles.item(i).classList.remove("green-tile");
+      wordsLeftTiles.item(i).classList.add("light-gray-tile");
+    }
+    lastDigitIdx--;
   }
   appendIconToElem("gg-align-center", wordsLeftTiles.item(0));
+}
+
+export function fillInBestGuessTiles(resp) {
+  bestGuessTiles.forEach(tile => { tile.innerText = "" })
+  const bestGuessScore = Math.ceil(resp[0][1])
+  console.log(bestGuessScore);
+  let lastDigitIdx = bestGuessScore.toString().length - 1;
+  for (let i = 4; i > 0; i--) {
+    if (lastDigitIdx >= 0) {
+      bestGuessTiles[i].innerText = bestGuessScore.toString()[lastDigitIdx]
+    }
+    else {
+      bestGuessTiles.item(i).classList.remove("yellow-tile");
+      bestGuessTiles.item(i).classList.add("light-gray-tile");
+    }
+    lastDigitIdx--;
+  }
+  appendIconToElem("gg-calculator", bestGuessTiles.item(0));
 }

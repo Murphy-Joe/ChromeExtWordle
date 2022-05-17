@@ -8,6 +8,7 @@
   --green-tile: #6aaa64;
   --yellow-tile: #c9b458;
   --gray-tile: var(--darker-text);
+  --gray-tile-light: #787c7e;
 }
 
 html {
@@ -29,6 +30,10 @@ body {
 
 .hidden {
   display: none !important;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 flex,
