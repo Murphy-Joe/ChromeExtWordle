@@ -49,7 +49,6 @@ export function fillInWordsLeftTiles(resp) {
 export function fillInBestGuessTiles(resp) {
   bestGuessTiles.forEach(tile => { tile.innerText = "" })
   const bestGuessScore = Math.round(resp[0][1])
-  console.log(bestGuessScore);
   let lastDigitIdx = bestGuessScore.toString().length - 1;
   for (let i = 4; i > 0; i--) {
     if (lastDigitIdx >= 0) {
@@ -65,5 +64,19 @@ export function fillInBestGuessTiles(resp) {
 }
 
 export function fillInBestLettersTiles(resp) {
+  const entries = Object.entries(resp)
+  const numLetters = entries.length;
+  bestLettersTiles.forEach(tile => { tile.innerText = "" })
+  let lastDigitIdx = numLetters.toString().length - 1;
+  for (let i = 4; i > 0; i--) {
+    if (lastDigitIdx >= 0) {
+      bestLettersTiles[i].innerText = numLetters.toString()[lastDigitIdx]
+    }
+    else {
+      bestLettersTiles.item(i).classList.remove("gray-tile");
+      bestLettersTiles.item(i).classList.add("light-gray-tile");
+    }
+    lastDigitIdx--;
+  }
   appendIconToElem("abc", bestLettersTiles.item(0));
 }

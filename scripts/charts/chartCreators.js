@@ -72,10 +72,7 @@ function createGuessChart(dataObj) {
 
 export function populateLettersChartData(apiResp) {
   // myChart.destroy();
-  let chartData = Object.fromEntries(
-    Object.entries(apiResp)
-      .filter(entryTuple => entryTuple[1] != 100)
-      .slice(0, 12))
+  let chartData = Object.fromEntries(Object.entries(apiResp).slice(0, 12))
   createLetterChart(chartData);
 }
 
