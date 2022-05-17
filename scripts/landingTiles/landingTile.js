@@ -63,3 +63,7 @@ export function fillInBestGuessTiles(resp) {
   }
   appendIconToElem("gg-calculator", bestGuessTiles.item(0));
 }
+
+export function fillInBestLettersTiles(resp) {
+  appendIconToElem("abc", bestLettersTiles.item(0));
+}
