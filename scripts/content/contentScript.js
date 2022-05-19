@@ -26,15 +26,22 @@ export function receiveGuessSelectionAndPopulateTiles() {
 
   function dispatchGameKeyPressEvent(guess) {
     const game = document.querySelector("body > game-app").shadowRoot.querySelector("#game");
-    for (let letter of guess) {
-      const gameKeyPressEvent = new CustomEvent("game-key-press", {
-        bubbles: true,
-        cancelable: true,
-        detail: {
-          key: letter
-        }
-      });
-      game.dispatchEvent(gameKeyPressEvent);
+    for (let i = 0; i < 5; i++) {
+      game.dispatchEvent(gameKeyPressEvent("Backspace"));
     }
+    for (let letter of guess) {
+      game.dispatchEvent(gameKeyPressEvent(letter));
+    }
+  }
+
+  function gameKeyPressEvent(letter) {
+    const gameKeyPressEvent = new CustomEvent("game-key-press", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        key: letter
+      }
+    });
+    return gameKeyPressEvent;
   }
 }
