@@ -2,24 +2,25 @@ export let wordsLeftTiles = document.querySelectorAll("#wordsLeft .tiles");
 export let bestGuessTiles = document.querySelectorAll("#bestGuess .tiles");
 export let bestLettersTiles = document.querySelectorAll("#bestLetters .tiles");
 
+const loadingBarClassName = "gg-loadbar-alt"
 
 function appendIconToElem(iconClassName, elem) {
   const iconSpan = document.createElement("span");
-    iconSpan.className = iconClassName;
+    iconSpan.classList.add(iconClassName)
     elem.appendChild(iconSpan);
 }
 
 function addLoadingBars(containerElem) {
   containerElem.forEach(tile => {
     tile.innerText = ""
-    appendIconToElem("gg-loadbar-alt", tile);
+    appendIconToElem(loadingBarClassName, tile);
   })
 }
 
 export function removeLoadingBars(containerElem) {
   containerElem.forEach(tile => { 
     const span = tile.querySelector("span");
-    span.classList.remove("gg-loadbar-alt");
+    span.classList.remove(loadingBarClassName);
   })
 }
 
