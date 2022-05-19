@@ -7,8 +7,6 @@ let guessChart;
 const normalModeOpt = document.getElementById("normal-mode");
 const hardModeOpt = document.getElementById("hard-mode");
 const targetsOnlyOpt = document.getElementById("targets-only");
-const normalModeLink = document.getElementById("normal-mode-link");
-normalModeLink.focus();
 
 normalModeOpt.addEventListener("click", () => {
     updateGuessChart(guessesApiResp.regular_mode);

@@ -19,6 +19,8 @@ let bestGuessPage = document.getElementById("bestGuessPage")
 
 let backButtons = document.querySelectorAll(".back")
 
+const normalModeLink = document.getElementById("normal-mode-link");
+
 // let refresh = document.getElementById("refresh")
 
 
@@ -41,6 +43,7 @@ export function addElementListeners() {
         body.classList.add("secondary-page-size")
         bestGuessPage.classList.remove("hidden")
         landingPage.classList.add("hidden")
+        normalModeLink.focus();
     })
 
     backButtons.forEach(btn => {
