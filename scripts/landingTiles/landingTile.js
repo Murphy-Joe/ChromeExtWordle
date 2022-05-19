@@ -49,7 +49,7 @@ export function fillInWordsLeftTiles(resp) {
 
 export function fillInBestGuessTiles(resp) {
   bestGuessTiles.forEach(tile => { tile.innerText = "" })
-  const bestGuessScore = Math.round(resp[0][1])
+  const bestGuessScore = Math.round(resp.regular_mode[0][1])
   let lastDigitIdx = bestGuessScore.toString().length - 1;
   for (let i = 4; i > 0; i--) {
     if (lastDigitIdx >= 0) {
