@@ -17,6 +17,19 @@
     color: var(--faded-text-on-yellow);
 }
 
+.code {
+    background-image: url(../images/github.png);
+    background-size: cover;
+    background-position: center;
+    height: 30px;
+    width: 30px;
+    opacity: 0.7;
+    transition: transform .1s ease-out;
+  }
+  
+  .code:hover {
+    transform: rotate(-15deg);
+  }
 
 
 

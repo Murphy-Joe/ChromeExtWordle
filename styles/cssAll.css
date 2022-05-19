@@ -54,6 +54,10 @@ flex-y {
   width: 400px;
 }
 
+.title-bar {
+  width: 96%;
+}
+
 .absolute {
   position: absolute;
 }
