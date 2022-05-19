@@ -4,7 +4,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 7%;
+    top: 14%;
 }
 
 .option {
@@ -24,7 +24,8 @@ a {
 }
 a {
     opacity: 0.8;
-    color: #454649d4;
+    /* color: #454649d4; */
+    color: #716f6f;
     position: relative;
     display: block;
     padding-bottom: 9px;
@@ -57,3 +58,7 @@ a:hover::before, a:focus::before {
 }
 
 /* https://codepad.co/snippet/simple-css-underline-menu */
+
+.guess-back {
+    top: -4px;
+}

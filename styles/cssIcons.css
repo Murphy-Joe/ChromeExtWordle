@@ -21,10 +21,13 @@
     background-image: url(../images/github.png);
     background-size: cover;
     background-position: center;
-    height: 30px;
-    width: 30px;
+    height: 22px;
+    width: 22px;
     opacity: 0.7;
     transition: transform .1s ease-out;
+    position: absolute;
+    right: 0;
+    top: -3px;
   }
   
   .code:hover {

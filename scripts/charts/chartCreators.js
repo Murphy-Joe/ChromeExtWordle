@@ -67,15 +67,13 @@ function createGuessChart(dataObj) {
         },
         title: {
           display: true,
-          text: '',
+          text: 'Avg Words Left After Guess',
           padding: {
-            top: 15
-          }
+            top: 0,
+            bottom: 30
+          },
+          color: "#999999c2"
         }
-        // title: {
-        //   display: true,
-        //   text: 'Avg Words Left After Guess'
-        // }
       }
     }
   };
