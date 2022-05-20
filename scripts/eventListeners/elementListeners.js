@@ -21,6 +21,8 @@ let backButtons = document.querySelectorAll(".back")
 
 const normalModeLink = document.getElementById("normal-mode-link");
 
+let githubLink = document.getElementById("code")
+
 // let refresh = document.getElementById("refresh")
 
 
@@ -54,5 +56,8 @@ export function addElementListeners() {
         })
     })
 
-    // refresh.addEventListener("click", () => executeContentScript(getGuessesAndSendBackToExtension))
+    githubLink.addEventListener("click", () => {
+        window.open("https://github.com/Murphy-Joe/ReWordle/blob/master/README.md", "_blank")
+    })
+
 }

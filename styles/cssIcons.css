@@ -17,21 +17,22 @@
     color: var(--faded-text-on-yellow);
 }
 
-.code {
+#code {
     background-image: url(../images/github.png);
     background-size: cover;
     background-position: center;
     height: 22px;
     width: 22px;
     opacity: 0.7;
-    transition: transform .1s ease-out;
+    transition: transform .1s ease-in;
     position: absolute;
     right: 0;
     top: -3px;
   }
   
-  .code:hover {
+  #code:hover {
     transform: rotate(-15deg);
+    cursor: pointer;
   }
 
 
